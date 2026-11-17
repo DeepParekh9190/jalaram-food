@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><clipPath id="c"><rect width="800" height="600" rx="72"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="800" height="600" fill="#FFF8EC"/>
+<circle cx="680" cy="72" r="96" fill="#F4C44E" opacity="0.35"/>
+<circle cx="80" cy="540" r="72" fill="#244B35" opacity="0.15"/>
+<ellipse cx="400" cy="336" rx="234.9" ry="100.44" fill="#ffffff" stroke="#F0E6D2" stroke-width="4"/>
+<ellipse cx="400" cy="336" rx="186.29999999999998" ry="72.9" fill="#F0E6D2" opacity="0.6"/>
+<g stroke="#F4C44E" stroke-width="7" stroke-linecap="round" fill="none"><path d="M456.7 336 Q481.009384594537 295.5 505.31876918907403 424.70877553263006"/><path d="M435.3518717653902 380.3298450559373 Q415.8308684082459 339.8298450559373 396.3098650511016 473.6505463267724"/><path d="M387.383063044677 391.2784126207094 Q338.7313854196808 350.7784126207094 290.0797077946847 418.93864817742144"/><path d="M348.9150651899328 360.60120800796557 Q307.76841886206944 261.272256310371 266.6217725342061 301.772256310371"/><path d="M348.9150651899328 311.3987919920345 Q346.25771408270714 169.88005356034196 343.60036297548146 210.38005356034196"/><path d="M387.383063044677 280.7215873792906 Q425.2160467419139 173.0822326592948 463.0490304391508 213.5822326592948"/><path d="M435.3518717653902 291.6701549440627 Q485.1861818908458 251.1701549440627 535.0204920163013 308.96748743316834"/></g>
+<rect x="16" y="16" rx="10" width="288" height="30" fill="#252525" opacity="0.75"/>
+<text x="28" y="37" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff">SAMPLE IMAGE</text>
+<text x="400" y="558" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#252525">Nylon Sev</text>
+</g></svg>

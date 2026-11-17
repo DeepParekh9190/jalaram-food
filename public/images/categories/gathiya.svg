@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><clipPath id="c"><rect width="400" height="300" rx="36"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="400" height="300" fill="#FFF8EC"/>
+<circle cx="340" cy="36" r="48" fill="#F4C44E" opacity="0.35"/>
+<circle cx="40" cy="270" r="36" fill="#244B35" opacity="0.15"/>
+<ellipse cx="200" cy="168" rx="117.45" ry="50.22" fill="#ffffff" stroke="#F0E6D2" stroke-width="4"/>
+<ellipse cx="200" cy="168" rx="93.14999999999999" ry="36.45" fill="#F0E6D2" opacity="0.6"/>
+<g fill="#252525"><circle cx="281" cy="168" r="10"/><circle cx="262.0495998926372" cy="204.4460574692268" r="13"/><circle cx="214.06550239102137" cy="223.8385995957922" r="16"/><circle cx="159.50000000000003" cy="217.10364039457767" r="10"/><circle cx="123.88489771634143" cy="187.39254212656542" r="13"/><circle cx="123.88489771634141" cy="148.60745787343458" r="16"/><circle cx="159.49999999999997" cy="118.89635960542233" r="10"/><circle cx="214.06550239102134" cy="112.1614004042078" r="13"/><circle cx="262.0495998926372" cy="131.5539425307732" r="16"/></g>
+<rect x="16" y="16" rx="10" width="144" height="30" fill="#252525" opacity="0.75"/>
+<text x="28" y="37" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff">SAMPLE IMAGE</text>
+<text x="200" y="279" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#252525">Gathiya</text>
+</g></svg>

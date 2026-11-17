@@ -1,26 +1,24 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Brand design tokens (Phase 2).
+ * Colours and fonts are theme tokens — components reference them
+ * with Tailwind utilities like bg-brand, text-charcoal, font-gujarati.
+ */
+@theme {
+  --color-brand: #e87524;
+  --color-brand-dark: #c95f16;
+  --color-cream: #fff8ec;
+  --color-cream-dark: #f0e6d2;
+  --color-leaf: #244b35;
+  --color-gold: #f4c44e;
+  --color-charcoal: #252525;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-gujarati: var(--font-noto-gujarati), var(--font-poppins), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
 }

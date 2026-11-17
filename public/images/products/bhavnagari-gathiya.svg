@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><clipPath id="c"><rect width="800" height="600" rx="72"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="800" height="600" fill="#FFF8EC"/>
+<circle cx="680" cy="72" r="96" fill="#F4C44E" opacity="0.35"/>
+<circle cx="80" cy="540" r="72" fill="#244B35" opacity="0.15"/>
+<ellipse cx="400" cy="336" rx="234.9" ry="100.44" fill="#ffffff" stroke="#F0E6D2" stroke-width="4"/>
+<ellipse cx="400" cy="336" rx="186.29999999999998" ry="72.9" fill="#F0E6D2" opacity="0.6"/>
+<g fill="#252525"><circle cx="562" cy="336" r="10"/><circle cx="524.0991997852744" cy="408.8921149384536" r="13"/><circle cx="428.13100478204274" cy="447.6771991915844" r="16"/><circle cx="319.00000000000006" cy="434.20728078915533" r="10"/><circle cx="247.76979543268286" cy="374.78508425313083" r="13"/><circle cx="247.76979543268283" cy="297.21491574686917" r="16"/><circle cx="318.99999999999994" cy="237.79271921084467" r="10"/><circle cx="428.1310047820427" cy="224.3228008084156" r="13"/><circle cx="524.0991997852744" cy="263.1078850615464" r="16"/></g>
+<rect x="16" y="16" rx="10" width="288" height="30" fill="#252525" opacity="0.75"/>
+<text x="28" y="37" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff">SAMPLE IMAGE</text>
+<text x="400" y="558" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#252525">Bhavnagari Gathiya</text>
+</g></svg>
