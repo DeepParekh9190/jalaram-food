@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ChevronRight, Truck } from "lucide-react";
+import { ChevronRight, MessageCircle, PackageCheck, Truck } from "lucide-react";
 import { categories, getProductBySlug, getRelated, products } from "@/data/products";
 import { siteConfig } from "@/data/site-config";
 import { ProductPurchase } from "@/components/product-purchase";
@@ -91,6 +91,33 @@ export default async function ProductPage(props: Props) {
               <Truck className="mt-0.5 h-4 w-4 shrink-0 text-charcoal" aria-hidden />
               {siteConfig.deliveryInfo.join(" ")}
             </p>
+          </div>
+
+          {/* How it reaches you */}
+          <div className="mt-4 rounded-2xl bg-white p-4 ring-1 ring-cream-dark">
+            <p className="text-xs font-bold uppercase tracking-widest text-charcoal/50">
+              How it reaches you
+            </p>
+            <ol className="mt-3 space-y-2.5 text-sm text-charcoal/80">
+              <li className="flex items-center gap-2.5">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                  <PackageCheck className="h-3.5 w-3.5 text-brand" aria-hidden />
+                </span>
+                Packed fresh in small batches
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                  <Truck className="h-3.5 w-3.5 text-brand" aria-hidden />
+                </span>
+                Dispatched by our city or dispatch team
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                  <MessageCircle className="h-3.5 w-3.5 text-brand" aria-hidden />
+                </span>
+                Order confirmed on WhatsApp
+              </li>
+            </ol>
           </div>
         </div>
       </div>

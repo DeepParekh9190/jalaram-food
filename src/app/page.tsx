@@ -57,7 +57,7 @@ const heroHighlights = [
 ];
 
 const trustBadges = [
-  { icon: Truck, label: "Free delivery in Rajkot above Rs. 500" },
+  { icon: Truck, label: "Free delivery in Rajkot above ₹500" },
   { icon: Flame, label: "Fresh small batches daily" },
   { icon: Store, label: "Retail & wholesale orders" },
   { icon: ShieldCheck, label: "Trusted local quality" },
@@ -191,7 +191,7 @@ export default function HomePage() {
               <span>
                 <span className="block text-sm font-bold text-charcoal">Mix Chavanu</span>
                 <span className="block text-sm font-semibold text-charcoal/60">
-                  From <span className="text-brand">Rs. 55</span> / pack
+                  From <span className="text-brand">₹55</span> / pack
                 </span>
               </span>
             </div>

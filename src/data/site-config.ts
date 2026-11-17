@@ -91,8 +91,8 @@ export const deliveryCities = [
 export const deliveryZones = {
   rajkot: {
     label: "Same-day delivery in Rajkot",
-    detail: "Free delivery in Rajkot on orders above Rs. 500.",
-    message: "Delivery: Same day (Rajkot city team). Free above Rs. 500.",
+    detail: "Free delivery in Rajkot on orders above ₹500.",
+    message: "Delivery: Same day (Rajkot city team). Free above ₹500.",
   },
   other: {
     label: "Courier delivery, 2 to 4 days",

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Check, Eye, Plus } from "lucide-react";
+import { Check, Eye, Minus, Plus } from "lucide-react";
 import type { Product } from "@/data/products";
 import { useCart } from "@/components/cart-provider";
 import { formatINR } from "@/lib/utils";
@@ -46,15 +46,16 @@ function PackPicker({
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const [size, setSize] = useState(product.packSizes[0]?.size ?? "");
+  const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
   const pack = product.packSizes.find((ps) => ps.size === size) ?? product.packSizes[0];
 
   function handleAdd() {
     if (!product.isAvailable || !pack) return;
-    add(product.id, pack.size, 1);
+    add(product.id, pack.size, qty);
     setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
+    setTimeout(() => setAdded(false), 2200);
   }
 
   return (
@@ -99,6 +100,38 @@ export function ProductCard({ product }: { product: Product }) {
 
         <PackPicker product={product} size={size} onChange={setSize} />
 
+        {/* quantity stepper, sits with the pack-size picker */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-semibold text-charcoal/70">Qty</span>
+          <div
+            className="flex items-center rounded-full border border-cream-dark bg-white"
+            role="group"
+            aria-label="Quantity"
+          >
+            <button
+              type="button"
+              onClick={() => setQty((q) => Math.max(1, q - 1))}
+              disabled={!product.isAvailable || qty <= 1}
+              aria-label="Decrease quantity"
+              className="rounded-l-full px-2.5 py-1.5 text-charcoal transition-colors hover:bg-cream disabled:cursor-not-allowed disabled:text-charcoal/30"
+            >
+              <Minus className="h-3.5 w-3.5" aria-hidden />
+            </button>
+            <span aria-live="polite" className="min-w-6 text-center text-sm font-bold text-charcoal">
+              {qty}
+            </span>
+            <button
+              type="button"
+              onClick={() => setQty((q) => Math.min(99, q + 1))}
+              disabled={!product.isAvailable}
+              aria-label="Increase quantity"
+              className="rounded-r-full px-2.5 py-1.5 text-charcoal transition-colors hover:bg-cream disabled:cursor-not-allowed disabled:text-charcoal/30"
+            >
+              <Plus className="h-3.5 w-3.5" aria-hidden />
+            </button>
+          </div>
+        </div>
+
         <div className="mt-auto flex items-center justify-between gap-2 pt-1">
           <span className="text-lg font-bold text-charcoal">{formatINR(pack?.price ?? 0)}</span>
           <div className="flex gap-1.5">
@@ -127,13 +160,29 @@ export function ProductCard({ product }: { product: Product }) {
                 </>
               ) : (
                 <>
-                  <Plus className="h-3.5 w-3.5" aria-hidden /> Add
+                  <Plus className="h-3.5 w-3.5" aria-hidden /> Add{qty > 1 ? ` ${qty}` : ""}
                 </>
               )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* floating confirmation toast */}
+      {added && (
+        <div
+          role="status"
+          className="anim-pop fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-full bg-white px-5 py-3 shadow-xl ring-1 ring-cream-dark"
+        >
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand/10">
+            <Check className="h-3.5 w-3.5 text-brand" aria-hidden />
+          </span>
+          <span className="text-sm font-semibold text-charcoal">Added to cart</span>
+          <Link href="/cart" className="text-sm font-bold text-brand hover:text-brand-dark">
+            View Cart
+          </Link>
+        </div>
+      )}
     </article>
   );
 }
