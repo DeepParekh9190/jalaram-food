@@ -83,3 +83,23 @@ export const deliveryCities = [
   "Jetpur",
   "Other",
 ] as const;
+
+/**
+ * City-aware delivery info, shown in the checkout once a city is
+ * selected and added to the WhatsApp order message.
+ */
+export const deliveryZones = {
+  rajkot: {
+    label: "Same-day delivery in Rajkot",
+    detail: "Free delivery in Rajkot on orders above Rs. 500.",
+    message: "Delivery: Same day (Rajkot city team). Free above Rs. 500.",
+  },
+  other: {
+    label: "Courier delivery, 2 to 4 days",
+    detail: "Delivered by courier anywhere in Gujarat and across India.",
+    message: "Delivery: Courier, 2 to 4 days (dispatch team).",
+  },
+} as const;
+
+/** Google Analytics 4 measurement ID (paste "G-XXXXXXXXXX" to enable; empty = off) */
+export const gaMeasurementId = "";

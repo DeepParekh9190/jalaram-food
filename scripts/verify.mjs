@@ -19,6 +19,8 @@ const {
   normalizeCity,
   getWhatsAppNumber,
   isValidWhatsAppNumber,
+  isRajkotCity,
+  getDeliveryZone,
   resolveLine,
   buildOrderMessage,
   buildWhatsAppUrl,
@@ -76,6 +78,12 @@ check("other cities route to Number B", () => {
   for (const city of ["Ahmedabad", "MUMBAI", " surat "]) {
     assert.equal(getWhatsAppNumber(city), whatsappConfig.otherCitiesNumber);
   }
+});
+check("delivery zone: Rajkot same-day, others courier", () => {
+  assert.equal(isRajkotCity("rajkot"), true);
+  assert.equal(isRajkotCity("Surat"), false);
+  assert.ok(getDeliveryZone("Rajkot").label.includes("Same-day"));
+  assert.ok(getDeliveryZone("Surat").label.includes("Courier"));
 });
 check("number validation rejects empty/invalid, accepts valid", () => {
   assert.equal(isValidWhatsAppNumber(""), false);

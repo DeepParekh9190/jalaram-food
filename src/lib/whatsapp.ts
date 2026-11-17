@@ -4,7 +4,7 @@
  * button only opens WhatsApp with a prefilled message, which the
  * customer still has to press Send on.
  */
-import { rajkotCityName, whatsappConfig } from "../data/site-config.ts";
+import { deliveryZones, rajkotCityName, whatsappConfig } from "../data/site-config.ts";
 import { products } from "../data/products.ts";
 import type { Product } from "@/data/products";
 
@@ -32,6 +32,16 @@ export function getWhatsAppNumber(city: string): string {
   return normalizeCity(city) === rajkotCityName
     ? whatsappConfig.rajkotNumber
     : whatsappConfig.otherCitiesNumber;
+}
+
+/** True when the selected city gets same-day delivery (Rajkot) */
+export function isRajkotCity(city: string): boolean {
+  return normalizeCity(city) === rajkotCityName;
+}
+
+/** Delivery info for the selected city, used in the checkout UI */
+export function getDeliveryZone(city: string) {
+  return isRajkotCity(city) ? deliveryZones.rajkot : deliveryZones.other;
 }
 
 /** A number is usable only if it's 10–15 digits (optionally with country code) */
@@ -84,6 +94,10 @@ export function buildOrderMessage(
     `City: ${customer.city}`,
     `Address: ${customer.address}`,
     customer.instructions ? `Instructions: ${customer.instructions}` : null,
+    "",
+    isRajkotCity(customer.city)
+      ? deliveryZones.rajkot.message
+      : deliveryZones.other.message,
     "",
     "Order Details:",
     "",

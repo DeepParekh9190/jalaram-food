@@ -128,6 +128,17 @@ Same file: `phone`, `email`, `address`, `instagram`, `deliveryInfo`, `hours`.
 3. After deploying, update the domain in `src/app/sitemap.ts`, `src/app/robots.ts`
    and `metadataBase` in `src/app/layout.tsx`.
 
+### 11. City delivery zones
+The checkout city dropdown (`deliveryCities`) and the delivery note shown after
+a city is picked and added to the WhatsApp order message (`deliveryZones`) are
+both in `src/data/site-config.ts`. Rajkot gets the same-day zone, every other
+city the courier zone; edit the text or add cities there.
+
+### 12. Enable Google Analytics (optional)
+Analytics is wired up but off by default. Paste your GA4 measurement ID
+(`G-XXXXXXXXXX` from analytics.google.com) into `gaMeasurementId` in
+`src/data/site-config.ts` and redeploy. No other step is needed.
+
 **That's the whole maintenance model:** edit the two files in `src/data/`,
 push to GitHub, Vercel redeploys. There is no admin panel by design, with no
 database, editing the data file is the safe, honest way to keep the site accurate.

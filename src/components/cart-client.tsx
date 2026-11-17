@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, Send, ShoppingBag, Trash2, X } from "lucide-react";
 import { useCart } from "@/components/cart-provider";
-import { openWhatsAppOrder, type CustomerDetails } from "@/lib/whatsapp";
+import {
+  openWhatsAppOrder,
+  getDeliveryZone,
+  type CustomerDetails,
+} from "@/lib/whatsapp";
 import { formatINR } from "@/lib/utils";
 import { siteConfig, deliveryCities } from "@/data/site-config";
 
@@ -335,6 +339,7 @@ function CitySelect({
   onChange: (value: string) => void;
   error?: string;
 }) {
+  const zone = getDeliveryZone(value);
   return (
     <div>
       <label htmlFor="city" className="text-sm font-semibold text-charcoal">
@@ -362,6 +367,11 @@ function CitySelect({
       <p className="mt-1 text-xs text-charcoal/50">
         Orders from Rajkot go to our city team; all other locations to our dispatch team.
       </p>
+      {value && !error && (
+        <div className="mt-2 rounded-xl bg-white px-3.5 py-2.5 text-sm text-charcoal ring-1 ring-gold/60">
+          <span className="font-bold">{zone.label}:</span> {zone.detail}
+        </div>
+      )}
       {error && (
         <p id="city-error" className="mt-1 text-xs font-semibold text-red-600">
           {error}

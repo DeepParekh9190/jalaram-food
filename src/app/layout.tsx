@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Poppins, Noto_Sans_Gujarati } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartProvider } from "@/components/cart-provider";
-import { siteConfig } from "@/data/site-config";
+import { siteConfig, gaMeasurementId } from "@/data/site-config";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -47,6 +48,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <Footer />
         </CartProvider>
+        {/* Google Analytics 4: active once gaMeasurementId is set in site-config.ts */}
+        {gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
