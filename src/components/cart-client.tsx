@@ -84,16 +84,16 @@ export function CartClient() {
   if (placed) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brown text-white">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-charcoal text-white">
           <Send className="h-7 w-7" aria-hidden />
         </div>
-        <h1 className="mt-4 text-3xl font-bold text-charcoal">Almost done — one tap left</h1>
+        <h1 className="mt-4 text-3xl font-bold text-charcoal">Almost done: one tap left</h1>
         <p className="mt-3 text-charcoal/70">
           WhatsApp has opened with your order message ready. Press <strong>Send</strong> in
           WhatsApp and our team will confirm your order and delivery details shortly.
         </p>
         <p className="mt-2 text-sm text-charcoal/50">
-          Note: the order is not placed automatically — you need to send the message in WhatsApp.
+          Note: the order is not placed automatically, you need to send the message in WhatsApp.
         </p>
         <Link
           href="/products"

@@ -1,6 +1,6 @@
 /**
  * WhatsApp Click-to-Chat helpers (Phases 9 & 10).
- * The site never claims auto-submission or payment — clicking the
+ * The site never claims auto-submission or payment, clicking the
  * button only opens WhatsApp with a prefilled message, which the
  * customer still has to press Send on.
  */

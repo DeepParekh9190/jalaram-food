@@ -6,7 +6,7 @@ import { ShopClient } from "@/components/shop-client";
 export const metadata: Metadata = {
   title: "Shop All Products",
   description:
-    "Browse authentic Gujarati and Kutchi namkeen — sev, gathiya, fafda, khakhra, combos and more. Fresh batches, retail and wholesale packs.",
+    "Browse authentic Gujarati and Kutchi namkeen, sev, gathiya, fafda, khakhra, combos and more. Fresh batches, retail and wholesale packs.",
 };
 
 export default function ShopPage() {

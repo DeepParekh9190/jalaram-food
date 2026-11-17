@@ -68,7 +68,7 @@ export function ProductPurchase({ product }: { product: Product }) {
         </div>
       </fieldset>
 
-      {/* Price — always from products.ts, updates with the selected pack */}
+      {/* Price, always from products.ts, updates with the selected pack */}
       <div className="mt-5 flex items-baseline gap-3">
         <span className="text-4xl font-extrabold text-charcoal" aria-live="polite">
           {formatINR((pack?.price ?? 0) * quantity)}
@@ -79,8 +79,8 @@ export function ProductPurchase({ product }: { product: Product }) {
       </div>
 
       {showWholesale && (
-        <p className="mt-2 text-sm text-brown">
-          Wholesale price {formatINR(pack.wholesalePrice!)} / {pack.size} — available for
+        <p className="mt-2 text-sm text-charcoal">
+          Wholesale price {formatINR(pack.wholesalePrice!)} / {pack.size}, available for
           orders of {product.minimumWholesaleQuantity}+ packs.{" "}
           <Link href="/wholesale" className="font-semibold underline hover:text-brand">
             Enquire here
@@ -132,7 +132,7 @@ export function ProductPurchase({ product }: { product: Product }) {
       </div>
 
       {added && (
-        <p className="mt-3 text-sm font-semibold text-brown">
+        <p className="mt-3 text-sm font-semibold text-charcoal">
           Added {quantity} × {pack?.size} to your cart.{" "}
           <Link href="/cart" className="underline hover:text-brand">
             Go to cart

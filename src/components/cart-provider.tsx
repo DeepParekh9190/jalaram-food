@@ -44,7 +44,7 @@ function lineKey(productId: string, size: string) {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  // Raw lines only — prices are always re-resolved from products.ts,
+  // Raw lines only, prices are always re-resolved from products.ts,
   // so a price edit in the data file applies to the cart too.
   const [raw, setRaw] = useState<CartLine[]>([]);
   const [hydrated, setHydrated] = useState(false);
@@ -64,7 +64,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(raw));
     } catch {
-      // storage full/unavailable — cart still works in-memory
+      // storage full/unavailable, cart still works in-memory
     }
   }, [raw, hydrated]);
 

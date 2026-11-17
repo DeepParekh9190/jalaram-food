@@ -5,7 +5,7 @@ import { siteConfig, whatsappConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: `Contact ${siteConfig.brandName} for orders, wholesale enquiries and feedback — on WhatsApp, phone or email.`,
+  description: `Contact ${siteConfig.brandName} for orders, wholesale enquiries and feedback, on WhatsApp, phone or email.`,
 };
 
 export default function ContactPage() {
@@ -53,7 +53,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-cream-dark">
-            <span className="rounded-2xl bg-brown/15 p-3 text-brown">
+            <span className="rounded-2xl bg-charcoal/15 p-3 text-charcoal">
               <Mail className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-start gap-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-cream-dark">
-            <span className="rounded-2xl bg-gold/30 p-3 text-brown">
+            <span className="rounded-2xl bg-gold/30 p-3 text-charcoal">
               <MapPin className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -85,10 +85,10 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-brown p-8 text-white">
+        <div className="rounded-3xl bg-charcoal p-8 text-white">
           <h2 className="text-2xl font-bold">Want to order right away?</h2>
           <p className="mt-3 text-white/80">
-            Build your cart on the shop page and send the full order to us on WhatsApp — no
+            Build your cart on the shop page and send the full order to us on WhatsApp, no
             account or online payment needed.
           </p>
           <div className="mt-6 flex flex-col gap-3">

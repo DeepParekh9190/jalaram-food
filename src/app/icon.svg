@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#E8820C"/>
   <rect x="4" y="4" width="56" height="56" rx="11" fill="none" stroke="#FFF9F0" stroke-width="2" opacity="0.5"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#FFF9F0">JF</text>
-  <circle cx="32" cy="52" r="2.5" fill="#F4C44E"/>
+  <!-- snack bowl glyph, no initials -->
+  <path d="M14 30 h36 a18 18 0 0 1 -36 0 z" fill="#FFF9F0"/>
+  <path d="M12 30 q20 -4 40 0" stroke="#FFF9F0" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="26" cy="24" r="3" fill="#FFF9F0"/>
+  <circle cx="34" cy="20" r="3.5" fill="#F4C44E"/>
+  <circle cx="41" cy="25" r="3" fill="#FFF9F0"/>
 </svg>

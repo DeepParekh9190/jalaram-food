@@ -43,7 +43,7 @@ export function WholesaleClient() {
     const lines = chosen
       .map(
         (p) =>
-          `- ${p.name} (${p.packSizes.map((ps) => ps.size).join(", ")}) — wholesale rate ${
+          `- ${p.name} (${p.packSizes.map((ps) => ps.size).join(", ")}), wholesale rate ${
             psPrice(p)
           }`
       )
@@ -115,7 +115,7 @@ export function WholesaleClient() {
           onChange={(v) => setForm((f) => ({ ...f, city: v }))}
           error={errors.city}
           placeholder="e.g. Jamnagar"
-          hint={cities === "rajkot" ? "Great — our Rajkot team serves you directly." : undefined}
+          hint={cities === "rajkot" ? "Great, our Rajkot team serves you directly." : undefined}
         />
         <Input
           id="w-mobile"
@@ -187,7 +187,7 @@ export function WholesaleClient() {
         Send Wholesale Enquiry on WhatsApp
       </button>
       <p className="mt-3 text-xs text-charcoal/50">
-        WhatsApp opens with your enquiry prefilled — press Send there to submit. Our team
+        WhatsApp opens with your enquiry prefilled, press Send there to submit. Our team
         replies with wholesale rates and delivery timelines.
       </p>
     </form>

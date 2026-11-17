@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
 /*
- * Jalaram Food — brand design tokens.
- * Palette: Saffron & Deep Brown on warm cream.
- * Colours and fonts are theme tokens — components reference them
- * with Tailwind utilities like bg-brand, text-brown, font-gujarati.
+ * Jalaram Food, brand design tokens.
+ * Palette: Saffron + Charcoal + Cream.
+ * Colours and fonts are theme tokens, components reference them
+ * with Tailwind utilities like bg-brand, text-charcoal, font-gujarati.
  */
 @theme {
   --color-brand: #e8820c;
   --color-brand-dark: #c56a07;
   --color-cream: #fff9f0;
   --color-cream-dark: #f3e7d3;
-  --color-brown: #4a2a12;
+  --color-charcoal: #262626;
   --color-gold: #f4c44e;
-  --color-charcoal: #33220f;
 
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-gujarati: var(--font-noto-gujarati), var(--font-poppins), sans-serif;
@@ -25,7 +24,7 @@ body {
 }
 
 /*
- * Motion — subtle entrance animations and hover transitions.
+ * Motion, subtle entrance animations and hover transitions.
  * All respect reduced-motion preferences.
  */
 @keyframes fade-up {
@@ -69,17 +68,6 @@ body {
   }
   50% {
     transform: translateY(-14px) rotate(3deg);
-  }
-}
-
-@keyframes shimmer-line {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: left;
   }
 }
 

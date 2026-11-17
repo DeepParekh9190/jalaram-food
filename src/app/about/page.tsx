@@ -14,7 +14,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <header className="text-center">
         <h1 className="text-4xl font-extrabold text-charcoal">About {siteConfig.brandName}</h1>
-        <p className="font-gujarati mt-2 text-lg text-brown">સ્વાદમાં અસલિયાત, સેવામાં ભરોસો.</p>
+        <p className="font-gujarati mt-2 text-lg text-charcoal">સ્વાદમાં અસલિયાત, સેવામાં ભરોસો.</p>
       </header>
 
       <Image
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </p>
         <p>
           Every product we list follows the same rule: it must taste like it came from the
-          best local farsan shop — soft gathiya that stays fresh for hours, sev that
+          best local farsan shop, soft gathiya that stays fresh for hours, sev that
           crackles, and spice blends that respect the original recipes. We never sit on
           stock; small batches mean what reaches you is days old, not weeks.
         </p>
@@ -50,7 +50,7 @@ export default function AboutPage() {
         {[
           { icon: Award, title: "Authenticity", text: "Traditional recipes, no shortcuts." },
           { icon: Leaf, title: "Freshness", text: "Small batches, quick dispatch." },
-          { icon: Users, title: "Both Retail & Wholesale", text: "One pack or one hundred — same care." },
+          { icon: Users, title: "Both Retail & Wholesale", text: "One pack or one hundred, same care." },
         ].map(({ icon: Icon, title, text }) => (
           <div key={title} className="rounded-3xl bg-white p-6 text-center shadow-sm ring-1 ring-cream-dark">
             <Icon className="mx-auto h-6 w-6 text-brand" aria-hidden />

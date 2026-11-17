@@ -23,12 +23,12 @@ const notoGujarati = Noto_Sans_Gujarati({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.example.com"), // replace with the real domain after deployment
   title: {
-    default: `${siteConfig.brandName} — Authentic Gujarati & Kutchi Snacks`,
+    default: `${siteConfig.brandName}: Authentic Gujarati & Kutchi Snacks`,
     template: `%s | ${siteConfig.brandName}`,
   },
   description: siteConfig.description,
   openGraph: {
-    title: `${siteConfig.brandName} — Authentic Taste of Gujarat`,
+    title: `${siteConfig.brandName}: Authentic Taste of Gujarat`,
     description: siteConfig.description,
     type: "website",
     images: ["/images/hero.jpg"],

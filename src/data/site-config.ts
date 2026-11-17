@@ -1,14 +1,15 @@
 /**
  * ============================================================
- * BUSINESS CONFIGURATION — edit this file to update the website
+ * BUSINESS CONFIGURATION, edit this file to update the website
  * ============================================================
  * Everything here (brand name, contacts, WhatsApp numbers,
  * delivery info) is sample content for the client presentation.
- * Change the values and redeploy — no other code needs editing.
+ * Change the values and redeploy, no other code needs editing.
  *
- * NOTE: no logo is used yet — the client does not have one. The
- * header, footer and favicon use a text/monogram mark instead.
- * When a real logo exists, add a `logo` path back here.
+ * NOTE: no logo is used yet, the client does not have one. The
+ * header and footer show only the brand name as text, and the
+ * favicon is a simple snack-bowl glyph. When a real logo exists,
+ * add a `logo` path back here.
  */
 
 export const siteConfig = {
@@ -18,9 +19,7 @@ export const siteConfig = {
   tagline: "Authentic Gujarati & Kutchi Namkeen",
   /** Short business description for footer / about */
   description:
-    "Traditional Gujarati & Kutchi snacks — sev, gathiya, fafda and more — made fresh in small batches with quality ingredients.",
-  /** Brand initials shown in the header/footer monogram mark (replace with a logo later) */
-  brandInitials: "JF",
+    "Traditional Gujarati and Kutchi snacks like sev, gathiya, fafda and more, made fresh in small batches with quality ingredients.",
 
   /** Contact details */
   phone: "+91 98765 43210",
@@ -44,13 +43,13 @@ export const siteConfig = {
 
 /**
  * WhatsApp Click-to-Chat numbers (Phase 9 routing).
- * Placeholders — replace with the real business numbers.
+ * Placeholders, replace with the real business numbers.
  * Format: country code + number, digits only, e.g. "919876543210"
  */
 export const whatsappConfig = {
-  /** Number A — orders from RAJKOT customers */
+  /** Number A, orders from RAJKOT customers */
   rajkotNumber: "919876543210",
-  /** Number B — orders from every other city */
+  /** Number B, orders from every other city */
   otherCitiesNumber: "919812345678",
   /** Wholesale / bulk enquiries (Phase 11) */
   wholesaleNumber: "919876543210",

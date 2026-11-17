@@ -1,8 +1,8 @@
-# Jalaram Food — Gujarati & Kutchi Snacks Website (Sample)
+# Jalaram Food, Gujarati & Kutchi Snacks Website (Sample)
 
 A premium, mobile-first sample e-commerce website for a Gujarati and Kutchi snacks
 business, built for client presentation. **No database, no backend, no environment
-variables** — everything is editable from two data files, and orders are received
+variables**, everything is editable from two data files, and orders are received
 through WhatsApp Click-to-Chat.
 
 > All branding, prices, images and contact details are sample placeholders.
@@ -51,14 +51,14 @@ public/images/          ← placeholder SVGs (replace with real photos, same fil
 Open `src/data/site-config.ts`, change `brandName` (and `tagline` / `description`
 if you like). Save.
 
-### 2. Replace the logo (currently none — monogram mark is used)
-The header, footer and browser icon currently show a text monogram (`brandInitials`
-in `site-config.ts`) and a `JF` favicon (`src/app/icon.svg`) because the client does
-not have a logo yet. When a real logo exists:
+### 2. Replace the logo (currently none, name-only header and footer)
+The header and footer show only the brand name as text and the browser icon is a
+simple snack-bowl glyph (`src/app/icon.svg`) because the client does not have a
+logo yet. When a real logo exists:
 1. Put the file in `public/images/logo.png`.
 2. Add `logo: "/images/logo.png"` to `site-config.ts`.
-3. Swap the monogram `<span>` in `src/components/header.tsx` and `footer.tsx` for an
-   `<Image>` of that file, and replace `src/app/icon.svg` with the real favicon.
+3. Show it next to the name in `src/components/header.tsx` and `footer.tsx` with an
+   `<Image>`, and replace `src/app/icon.svg` with the real favicon.
 
 ### 3. Add a new snack
 Open `src/data/products.ts`, copy any existing product block, and edit:
@@ -97,7 +97,7 @@ packSizes: [
 ],
 ```
 
-The new price appears **everywhere automatically** — product cards, the product
+The new price appears **everywhere automatically**, product cards, the product
 page, the cart and the WhatsApp order message. Nothing else to change.
 
 To update a photo: replace the file in `public/images/products/` keeping the same
@@ -109,8 +109,8 @@ Open `src/data/site-config.ts`:
 
 ```ts
 export const whatsappConfig = {
-  rajkotNumber: "919876543210",       // Number A — Rajkot city orders
-  otherCitiesNumber: "919812345678",  // Number B — every other city
+  rajkotNumber: "919876543210",       // Number A, Rajkot city orders
+  otherCitiesNumber: "919812345678",  // Number B, every other city
   wholesaleNumber: "919876543210",    // wholesale enquiries
 };
 ```
@@ -129,7 +129,7 @@ Same file: `phone`, `email`, `address`, `instagram`, `deliveryInfo`, `hours`.
    and `metadataBase` in `src/app/layout.tsx`.
 
 **That's the whole maintenance model:** edit the two files in `src/data/`,
-push to GitHub, Vercel redeploys. There is no admin panel by design — with no
+push to GitHub, Vercel redeploys. There is no admin panel by design, with no
 database, editing the data file is the safe, honest way to keep the site accurate.
 
 ---
@@ -139,7 +139,7 @@ database, editing the data file is the safe, honest way to keep the site accurat
 1. Customer adds snacks to the cart (pack size selectable per product, price
    updates with the pack).
 2. On the cart page they enter name, mobile, city, address.
-3. "Place Order on WhatsApp" opens WhatsApp with a formatted order message —
+3. "Place Order on WhatsApp" opens WhatsApp with a formatted order message, 
    routed to Number A for Rajkot, Number B for everyone else.
 4. The customer presses **Send** in WhatsApp; the team confirms delivery and
    payment manually. Nothing is auto-submitted or paid online.

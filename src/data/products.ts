@@ -1,10 +1,10 @@
 /**
  * ============================================================
- * PRODUCT CATALOGUE — the single file to edit for all products
+ * PRODUCT CATALOGUE, the single file to edit for all products
  * ============================================================
  * Add, remove or edit products here. Prices shown on the website
  * (cards, detail pages, cart, WhatsApp message) ALWAYS come from
- * this file — never hardcode a price in a UI component.
+ * this file, never hardcode a price in a UI component.
  * After editing, save and redeploy to update the live website.
  */
 
@@ -23,7 +23,7 @@ export type Product = {
   name: string;
   description: string;
   category: Category;
-  /** Path under /public — replace the placeholder SVG with a real photo, keep the same filename */
+  /** Path under /public, replace the placeholder SVG with a real photo, keep the same filename */
   image: string;
   /** First entry is the default/base pack */
   packSizes: PackSize[];
@@ -164,7 +164,7 @@ export const products: Product[] = [
     slug: "fafda-jalebi",
     name: "Fafda Gathiya Combo",
     description:
-      "Crisp besan fafda with green chilli chutney mix — the famous Jahnvi-favoured morning snack of Surat, packed to stay crunchy.",
+      "Crisp besan fafda with green chilli chutney mix, the famous Jahnvi-favoured morning snack of Surat, packed to stay crunchy.",
     category: "Farsan",
     image: "/images/products/fafda.svg",
     packSizes: [
@@ -219,7 +219,7 @@ export const products: Product[] = [
     slug: "khakhra-classic",
     name: "Classic Wheat Khakhra",
     description:
-      "Paper-thin, slow-roasted whole-wheat khakhra. Crackling crisp with ghee-roasted flavour — a wholesome travel snack.",
+      "Paper-thin, slow-roasted whole-wheat khakhra. Crackling crisp with ghee-roasted flavour, a wholesome travel snack.",
     category: "Traditional Snacks",
     image: "/images/products/khakhra-classic.png",
     packSizes: [
@@ -273,7 +273,7 @@ export const products: Product[] = [
     slug: "vanela-gathiya",
     name: "Vanela Gathiya",
     description:
-      "Rolled, soft vanela gathiya — the Jamnagar style that stays fresh for hours. Comes with fried chillies and papdi on the side.",
+      "Rolled, soft vanela gathiya, the Jamnagar style that stays fresh for hours. Comes with fried chillies and papdi on the side.",
     category: "Gathiya",
     image: "/images/products/vanela-gathiya.png",
     packSizes: [
@@ -291,7 +291,7 @@ export const products: Product[] = [
     slug: "festival-hamper",
     name: "Festival Namkeen Hamper",
     description:
-      "A curated festive box of six bestsellers — nylon sev, ratlami, gathiya, fafda, khakhra and chevdo. Our most gifted combo.",
+      "A curated festive box of six bestsellers, nylon sev, ratlami, gathiya, fafda, khakhra and chevdo. Our most gifted combo.",
     category: "Special Combos",
     image: "/images/products/festival-hamper.svg",
     packSizes: [
@@ -364,7 +364,7 @@ export function getRelated(product: Product, count = 4): Product[] {
   return [...sameCategory, ...rest].slice(0, count);
 }
 
-/** Base (first) pack — used for "from ₹x" display and sorting */
+/** Base (first) pack, used for "from ₹x" display and sorting */
 export function getBasePrice(product: Product): number {
   return product.packSizes[0]?.price ?? 0;
 }

@@ -99,7 +99,7 @@ export function ShopClient() {
             className={cn(
               "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
               category === c
-                ? "bg-brown text-white"
+                ? "bg-charcoal text-white"
                 : "bg-white text-charcoal ring-1 ring-cream-dark hover:ring-brand"
             )}
           >
