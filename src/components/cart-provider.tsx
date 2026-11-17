@@ -13,7 +13,7 @@ import { products } from "@/data/products";
 import type { Product } from "@/data/products";
 import { resolveLine, type CartLine } from "@/lib/whatsapp";
 
-const STORAGE_KEY = "swadrani-cart-v1";
+const STORAGE_KEY = "jalaram-food-cart-v1";
 
 type ResolvedLine = {
   key: string;

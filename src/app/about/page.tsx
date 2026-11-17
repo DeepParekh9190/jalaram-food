@@ -14,11 +14,11 @@ export default function AboutPage() {
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <header className="text-center">
         <h1 className="text-4xl font-extrabold text-charcoal">About {siteConfig.brandName}</h1>
-        <p className="font-gujarati mt-2 text-lg text-leaf">સ્વાદમાં અસલિયાત, સેવામાં ભરોસો.</p>
+        <p className="font-gujarati mt-2 text-lg text-brown">સ્વાદમાં અસલિયાત, સેવામાં ભરોસો.</p>
       </header>
 
       <Image
-        src="/images/brand-story.svg"
+        src="/images/brand-story.jpg"
         alt="Traditional Gujarati snack preparation"
         width={1000}
         height={560}

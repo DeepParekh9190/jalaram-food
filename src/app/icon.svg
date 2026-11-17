@@ -1,9 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle cx="32" cy="32" r="30" fill="#E87524"/>
-  <circle cx="32" cy="34" r="17" fill="#F4C44E"/>
-  <circle cx="25" cy="30" r="2.5" fill="#252525"/>
-  <circle cx="32" cy="26" r="2.5" fill="#252525"/>
-  <circle cx="39" cy="30" r="2.5" fill="#252525"/>
-  <path d="M26 39q6 5 12 0" stroke="#252525" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <rect x="14" y="10" width="36" height="7" rx="3.5" fill="#244B35"/>
+  <rect width="64" height="64" rx="14" fill="#E8820C"/>
+  <rect x="4" y="4" width="56" height="56" rx="11" fill="none" stroke="#FFF9F0" stroke-width="2" opacity="0.5"/>
+  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="bold" fill="#FFF9F0">JF</text>
+  <circle cx="32" cy="52" r="2.5" fill="#F4C44E"/>
 </svg>

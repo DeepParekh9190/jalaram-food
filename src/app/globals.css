@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 /*
- * Brand design tokens (Phase 2).
+ * Jalaram Food — brand design tokens.
+ * Palette: Saffron & Deep Brown on warm cream.
  * Colours and fonts are theme tokens — components reference them
- * with Tailwind utilities like bg-brand, text-charcoal, font-gujarati.
+ * with Tailwind utilities like bg-brand, text-brown, font-gujarati.
  */
 @theme {
-  --color-brand: #e87524;
-  --color-brand-dark: #c95f16;
-  --color-cream: #fff8ec;
-  --color-cream-dark: #f0e6d2;
-  --color-leaf: #244b35;
+  --color-brand: #e8820c;
+  --color-brand-dark: #c56a07;
+  --color-cream: #fff9f0;
+  --color-cream-dark: #f3e7d3;
+  --color-brown: #4a2a12;
   --color-gold: #f4c44e;
-  --color-charcoal: #252525;
+  --color-charcoal: #33220f;
 
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-gujarati: var(--font-noto-gujarati), var(--font-poppins), sans-serif;
@@ -21,4 +22,100 @@
 body {
   background-color: var(--color-cream);
   color: var(--color-charcoal);
+}
+
+/*
+ * Motion — subtle entrance animations and hover transitions.
+ * All respect reduced-motion preferences.
+ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  70% {
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(3deg);
+  }
+}
+
+@keyframes shimmer-line {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.anim-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.anim-fade-in {
+  animation: fade-in 0.9s ease both;
+}
+.anim-pop {
+  animation: pop-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.anim-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.anim-delay-1 {
+  animation-delay: 0.12s;
+}
+.anim-delay-2 {
+  animation-delay: 0.24s;
+}
+.anim-delay-3 {
+  animation-delay: 0.36s;
+}
+.anim-delay-4 {
+  animation-delay: 0.48s;
+}
+.anim-delay-5 {
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-fade-in,
+  .anim-pop,
+  .anim-float {
+    animation: none;
+  }
 }

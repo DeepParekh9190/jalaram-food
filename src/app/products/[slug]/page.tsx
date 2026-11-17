@@ -77,7 +77,7 @@ export default async function ProductPage(props: Props) {
             {product.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-gold/40 px-3 py-1 text-xs font-semibold text-leaf"
+                className="rounded-full bg-gold/40 px-3 py-1 text-xs font-semibold text-brown"
               >
                 {tag}
               </span>
@@ -88,7 +88,7 @@ export default async function ProductPage(props: Props) {
 
           <div className="mt-6 rounded-2xl bg-white p-4 ring-1 ring-cream-dark">
             <p className="flex items-start gap-2 text-sm text-charcoal/70">
-              <Truck className="mt-0.5 h-4 w-4 shrink-0 text-leaf" aria-hidden />
+              <Truck className="mt-0.5 h-4 w-4 shrink-0 text-brown" aria-hidden />
               {siteConfig.deliveryInfo.join(" ")}
             </p>
           </div>

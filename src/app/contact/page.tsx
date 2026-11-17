@@ -53,7 +53,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-cream-dark">
-            <span className="rounded-2xl bg-leaf/15 p-3 text-leaf">
+            <span className="rounded-2xl bg-brown/15 p-3 text-brown">
               <Mail className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-start gap-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-cream-dark">
-            <span className="rounded-2xl bg-gold/30 p-3 text-leaf">
+            <span className="rounded-2xl bg-gold/30 p-3 text-brown">
               <MapPin className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -85,7 +85,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-leaf p-8 text-white">
+        <div className="rounded-3xl bg-brown p-8 text-white">
           <h2 className="text-2xl font-bold">Want to order right away?</h2>
           <p className="mt-3 text-white/80">
             Build your cart on the shop page and send the full order to us on WhatsApp — no
@@ -107,9 +107,9 @@ export default function ContactPage() {
           </div>
 
           <h3 className="mt-8 font-bold">Delivery Information</h3>
-          <ul className="mt-2 space-y-1.5 text-sm text-white/80">
+          <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-white/80">
             {siteConfig.deliveryInfo.map((info, i) => (
-              <li key={i}>• {info}</li>
+              <li key={i}>{info}</li>
             ))}
           </ul>
         </div>

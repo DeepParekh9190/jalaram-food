@@ -1,4 +1,4 @@
-# Swad Rani — Gujarati & Kutchi Snacks Website (Sample)
+# Jalaram Food — Gujarati & Kutchi Snacks Website (Sample)
 
 A premium, mobile-first sample e-commerce website for a Gujarati and Kutchi snacks
 business, built for client presentation. **No database, no backend, no environment
@@ -51,10 +51,14 @@ public/images/          ← placeholder SVGs (replace with real photos, same fil
 Open `src/data/site-config.ts`, change `brandName` (and `tagline` / `description`
 if you like). Save.
 
-### 2. Replace the logo
-Replace `public/images/logo.svg` with your logo file **named `logo.svg`** — or use
-another name and update `logo` in `site-config.ts`. Same for the browser icon:
-`src/app/icon.svg`.
+### 2. Replace the logo (currently none — monogram mark is used)
+The header, footer and browser icon currently show a text monogram (`brandInitials`
+in `site-config.ts`) and a `JF` favicon (`src/app/icon.svg`) because the client does
+not have a logo yet. When a real logo exists:
+1. Put the file in `public/images/logo.png`.
+2. Add `logo: "/images/logo.png"` to `site-config.ts`.
+3. Swap the monogram `<span>` in `src/components/header.tsx` and `footer.tsx` for an
+   `<Image>` of that file, and replace `src/app/icon.svg` with the real favicon.
 
 ### 3. Add a new snack
 Open `src/data/products.ts`, copy any existing product block, and edit:

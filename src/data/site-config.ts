@@ -5,22 +5,26 @@
  * Everything here (brand name, contacts, WhatsApp numbers,
  * delivery info) is sample content for the client presentation.
  * Change the values and redeploy — no other code needs editing.
+ *
+ * NOTE: no logo is used yet — the client does not have one. The
+ * header, footer and favicon use a text/monogram mark instead.
+ * When a real logo exists, add a `logo` path back here.
  */
 
 export const siteConfig = {
   /** Brand name shown in header, footer, metadata */
-  brandName: "Swad Rani",
+  brandName: "Jalaram Food",
   /** Tagline used in metadata and footer */
   tagline: "Authentic Gujarati & Kutchi Namkeen",
   /** Short business description for footer / about */
   description:
     "Traditional Gujarati & Kutchi snacks — sev, gathiya, fafda and more — made fresh in small batches with quality ingredients.",
-  /** Logo path in /public (replace public/images/logo.svg with the real logo, keep the same name) */
-  logo: "/images/logo.svg",
+  /** Brand initials shown in the header/footer monogram mark (replace with a logo later) */
+  brandInitials: "JF",
 
   /** Contact details */
   phone: "+91 98765 43210",
-  email: "orders@swadrani.example",
+  email: "orders@jalaramfood.example",
   address: "Shop 12, Danapith Market, Rajkot, Gujarat 360001",
 
   /** Social links (placeholder) */

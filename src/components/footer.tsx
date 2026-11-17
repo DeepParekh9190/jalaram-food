@@ -14,7 +14,15 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         {/* Brand */}
         <div>
-          <p className="text-lg font-bold text-gold">{siteConfig.brandName}</p>
+          <div className="flex items-center gap-2.5">
+            <span
+              aria-hidden
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand font-serif text-lg font-bold text-cream"
+            >
+              {siteConfig.brandInitials}
+            </span>
+            <p className="text-lg font-bold text-gold">{siteConfig.brandName}</p>
+          </div>
           <p className="mt-3 text-sm leading-relaxed text-white/70">
             {siteConfig.description}
           </p>

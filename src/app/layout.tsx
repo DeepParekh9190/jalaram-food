@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.brandName} — Authentic Taste of Gujarat`,
     description: siteConfig.description,
     type: "website",
-    images: ["/images/hero.svg"],
+    images: ["/images/hero.jpg"],
   },
 };
 

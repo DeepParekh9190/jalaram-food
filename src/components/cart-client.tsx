@@ -41,9 +41,7 @@ export function CartClient() {
   const deliveryNote = useMemo(
     () =>
       siteConfig.deliveryInfo.map((info, i) => (
-        <li key={i} className="flex gap-2">
-          <span aria-hidden>•</span> {info}
-        </li>
+        <li key={i}>{info}</li>
       )),
     []
   );
@@ -86,7 +84,7 @@ export function CartClient() {
   if (placed) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-leaf text-white">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brown text-white">
           <Send className="h-7 w-7" aria-hidden />
         </div>
         <h1 className="mt-4 text-3xl font-bold text-charcoal">Almost done — one tap left</h1>
@@ -273,7 +271,7 @@ export function CartClient() {
               Place Order on WhatsApp
             </button>
 
-            <ul className="mt-4 space-y-1 text-xs text-charcoal/50">{deliveryNote}</ul>
+            <ul className="mt-4 list-disc space-y-1 pl-5 text-xs text-charcoal/50">{deliveryNote}</ul>
           </div>
         </section>
       </div>

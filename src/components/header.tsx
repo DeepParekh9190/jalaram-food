@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
-import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
 import { useCart } from "@/components/cart-provider";
 import { cn } from "@/lib/utils";
@@ -25,16 +24,21 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-cream-dark bg-cream/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-cream/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <Image
-            src={siteConfig.logo}
-            alt={`${siteConfig.brandName} logo`}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
-          <span className="text-lg font-bold text-charcoal sm:text-xl">
-            {siteConfig.brandName}
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          {/* No logo yet — text monogram mark until the client provides one */}
+          <span
+            aria-hidden
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand font-serif text-lg font-bold text-cream shadow-sm"
+          >
+            {siteConfig.brandInitials}
+          </span>
+          <span className="leading-tight">
+            <span className="block text-lg font-bold text-charcoal sm:text-xl">
+              {siteConfig.brandName}
+            </span>
+            <span className="hidden text-[11px] font-semibold uppercase tracking-widest text-brand sm:block">
+              Gujarati &amp; Kutchi Namkeen
+            </span>
           </span>
         </Link>
 

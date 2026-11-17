@@ -79,7 +79,7 @@ export function ProductPurchase({ product }: { product: Product }) {
       </div>
 
       {showWholesale && (
-        <p className="mt-2 text-sm text-leaf">
+        <p className="mt-2 text-sm text-brown">
           Wholesale price {formatINR(pack.wholesalePrice!)} / {pack.size} — available for
           orders of {product.minimumWholesaleQuantity}+ packs.{" "}
           <Link href="/wholesale" className="font-semibold underline hover:text-brand">
@@ -132,7 +132,7 @@ export function ProductPurchase({ product }: { product: Product }) {
       </div>
 
       {added && (
-        <p className="mt-3 text-sm font-semibold text-leaf">
+        <p className="mt-3 text-sm font-semibold text-brown">
           Added {quantity} × {pack?.size} to your cart.{" "}
           <Link href="/cart" className="underline hover:text-brand">
             Go to cart
