@@ -7,7 +7,7 @@ import { Minus, Plus, Send, ShoppingBag, Trash2, X } from "lucide-react";
 import { useCart } from "@/components/cart-provider";
 import { openWhatsAppOrder, type CustomerDetails } from "@/lib/whatsapp";
 import { formatINR } from "@/lib/utils";
-import { siteConfig } from "@/data/site-config";
+import { siteConfig, deliveryCities } from "@/data/site-config";
 
 type FieldErrors = Partial<Record<keyof CustomerDetails, string>>;
 
@@ -17,7 +17,7 @@ function validate(customer: CustomerDetails): FieldErrors {
   // Indian mobile numbers: 10 digits, optional +91/0 prefix
   if (!/^(\+?91[- ]?)?[0-9]{10}$/.test(customer.mobile.replace(/[- ]/g, "")))
     errors.mobile = "Enter a valid 10-digit mobile number.";
-  if (!customer.city.trim()) errors.city = "Please enter your city.";
+  if (!customer.city.trim()) errors.city = "Please select your city.";
   if (customer.address.trim().length < 10)
     errors.address = "Please enter your full delivery address.";
   return errors;
@@ -238,14 +238,10 @@ export function CartClient() {
                 type="tel"
                 autoComplete="tel"
               />
-              <Field
-                label="City"
+              <CitySelect
                 value={customer.city}
                 error={errors.city}
                 onChange={(v) => setCustomer((c) => ({ ...c, city: v }))}
-                placeholder="e.g. Rajkot"
-                autoComplete="address-level2"
-                hint="Orders from Rajkot are handled by our city team; other cities by our dispatch team."
               />
               <Field
                 label="Full Delivery Address"
@@ -322,6 +318,52 @@ function Field({
       {hint && !error && <p className="mt-1 text-xs text-charcoal/50">{hint}</p>}
       {error && (
         <p id={`${id}-error`} className="mt-1 text-xs font-semibold text-red-600">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** Location dropdown: Rajkot routes to the city team, all others to dispatch */
+function CitySelect({
+  value,
+  onChange,
+  error,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor="city" className="text-sm font-semibold text-charcoal">
+        City / Location
+      </label>
+      <select
+        id="city"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? "city-error" : undefined}
+        className={
+          error
+            ? "mt-1 w-full rounded-xl border-2 border-red-400 bg-white px-3.5 py-2.5 text-sm focus:border-red-500 focus:outline-none"
+            : "mt-1 w-full rounded-xl border border-cream-dark bg-cream px-3.5 py-2.5 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+        }
+      >
+        <option value="">Select your city</option>
+        {deliveryCities.map((city) => (
+          <option key={city} value={city}>
+            {city}
+          </option>
+        ))}
+      </select>
+      <p className="mt-1 text-xs text-charcoal/50">
+        Orders from Rajkot go to our city team; all other locations to our dispatch team.
+      </p>
+      {error && (
+        <p id="city-error" className="mt-1 text-xs font-semibold text-red-600">
           {error}
         </p>
       )}

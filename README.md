@@ -5,7 +5,7 @@ business, built for client presentation. **No database, no backend, no environme
 variables**, everything is editable from two data files, and orders are received
 through WhatsApp Click-to-Chat.
 
-> All branding, prices, images and contact details are sample placeholders.
+> All branding, prices, images and email address are sample placeholders; the WhatsApp numbers are the client's real ones.
 
 ## Tech Stack
 
@@ -109,9 +109,9 @@ Open `src/data/site-config.ts`:
 
 ```ts
 export const whatsappConfig = {
-  rajkotNumber: "919876543210",       // Number A, Rajkot city orders
-  otherCitiesNumber: "919812345678",  // Number B, every other city
-  wholesaleNumber: "919876543210",    // wholesale enquiries
+  rajkotNumber: "917028464273",       // Number A, Rajkot city orders
+  otherCitiesNumber: "919727019097",  // Number B, every other city
+  wholesaleNumber: "917028464273",    // wholesale enquiries
 };
 ```
 
