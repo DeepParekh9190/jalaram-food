@@ -32,8 +32,8 @@ function PackPicker({
           onClick={() => onChange?.(ps.size)}
           className={
             ps.size === size
-              ? "rounded-full border border-brand bg-brand px-2.5 py-1 text-xs font-semibold text-white"
-              : "rounded-full border border-cream-dark bg-white px-2.5 py-1 text-xs font-medium text-charcoal hover:border-brand"
+              ? "rounded-full border border-brand bg-brand px-3 py-1.5 text-sm font-semibold text-white"
+              : "rounded-full border border-cream-dark bg-white px-3 py-1.5 text-sm font-medium text-charcoal hover:border-brand"
           }
         >
           {ps.size}
@@ -91,11 +91,11 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="text-xs text-charcoal/50">{pack?.size}</span>
         </div>
 
-        <Link href={`/products/${product.slug}`} className="font-semibold text-charcoal hover:text-brand">
+        <Link href={`/products/${product.slug}`} className="text-lg font-semibold text-charcoal hover:text-brand">
           {product.name}
         </Link>
 
-        <p className="line-clamp-2 text-sm text-charcoal/60">{product.description}</p>
+        <p className="line-clamp-2 text-[15px] leading-relaxed text-charcoal/60">{product.description}</p>
 
         <PackPicker product={product} size={size} onChange={setSize} />
 
@@ -105,7 +105,7 @@ export function ProductCard({ product }: { product: Product }) {
             <Link
               href={`/products/${product.slug}`}
               aria-label={`View details for ${product.name}`}
-              className="flex items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-brand hover:text-brand"
+              className="flex items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-brand hover:text-brand"
             >
               <Eye className="h-3.5 w-3.5" aria-hidden />
               <span className="hidden sm:inline">Details</span>
@@ -119,7 +119,7 @@ export function ProductCard({ product }: { product: Product }) {
                   ? `Add ${product.name} (${pack?.size}) to cart`
                   : `${product.name} is currently unavailable`
               }
-              className="flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
+              className="flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
             >
               {added ? (
                 <>

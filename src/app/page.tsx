@@ -11,6 +11,7 @@ import {
   ShoppingBag,
   Sparkles,
   Store,
+  Truck,
   Quote,
 } from "lucide-react";
 import { categories, getBestsellers } from "@/data/products";
@@ -55,34 +56,12 @@ const heroHighlights = [
   { icon: ShoppingBag, label: "Retail & wholesale packs" },
 ];
 
-const tickerItems = [
-  "Free delivery in Rajkot on orders above Rs. 500",
-  "Fresh small batches, every single morning",
-  "Retail and wholesale orders welcome",
-  "Authentic Kutchi and Gujarati namkeen",
+const trustBadges = [
+  { icon: Truck, label: "Free delivery in Rajkot above Rs. 500" },
+  { icon: Flame, label: "Fresh small batches daily" },
+  { icon: Store, label: "Retail & wholesale orders" },
+  { icon: ShieldCheck, label: "Trusted local quality" },
 ];
-
-/** Seamless scrolling strip under the hero, kept quiet and minimal */
-function Ticker() {
-  return (
-    <div
-      aria-hidden
-      className="overflow-hidden border-y border-cream-dark bg-white py-2.5"
-    >
-      <div className="anim-marquee flex w-max items-center">
-        {[...tickerItems, ...tickerItems].map((item, i) => (
-          <span
-            key={i}
-            className="flex items-center text-xs font-medium uppercase tracking-[0.25em] text-charcoal/60"
-          >
-            <Sparkles className="mx-7 h-3 w-3 shrink-0 text-brand" aria-hidden />
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const testimonials = [
   {
@@ -154,10 +133,10 @@ export default function HomePage() {
                 </svg>
               </span>
             </h1>
-            <p className="anim-fade-up anim-delay-2 mt-5 max-w-xl text-lg text-charcoal/70 sm:text-xl">
+            <p className="anim-fade-up anim-delay-2 mt-6 max-w-xl text-xl text-charcoal/70 sm:text-2xl">
               Traditional Gujarati &amp; Kutchi Snacks, Made for Every Moment.
             </p>
-            <p className="anim-fade-up anim-delay-3 mt-2 font-gujarati text-lg text-charcoal/70">
+            <p className="anim-fade-up anim-delay-3 mt-3 font-gujarati text-lg text-charcoal/60 sm:text-xl">
               સ્વાદ જે દિલમાં ઘર કરી લે, ગુજરાતના પરંપરાગત નમકીન.
             </p>
 
@@ -192,52 +171,52 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* Floating photo collage, small source images stay crisp at card size */}
-          <div className="relative mx-auto grid max-w-md grid-cols-2 gap-4 pb-6 lg:max-w-none" aria-hidden>
-            <div className="anim-pop anim-delay-2 flex flex-col justify-end gap-4">
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/10 [animation-delay:0.8s]">
-                <Image
-                  src="/images/products/nylon-sev.png"
-                  alt=""
-                  width={280}
-                  height={200}
-                  priority
-                  className="w-full object-cover"
-                />
-              </div>
-              <div className="anim-float rounded-3xl bg-brand p-5 shadow-2xl shadow-charcoal/10 [animation-delay:2.2s]">
-                <p className="font-gujarati text-2xl font-bold text-cream">સ્વાદ</p>
-                <p className="mt-1 text-sm text-cream/80">that feels like home</p>
-              </div>
+          {/* Large product photo with floating price card */}
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden>
+            <div className="anim-pop anim-delay-2 overflow-hidden rounded-[2.5rem] shadow-2xl shadow-charcoal/15">
+              <Image
+                src="/images/hero.jpg"
+                alt=""
+                width={720}
+                height={720}
+                priority
+                className="aspect-square w-full object-cover"
+              />
             </div>
-            <div className="anim-pop anim-delay-3 mt-10 flex flex-col gap-4">
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/10 [animation-delay:1.6s]">
-                <Image
-                  src="/images/products/tikha-gathiya.png"
-                  alt=""
-                  width={280}
-                  height={200}
-                  priority
-                  className="w-full object-cover"
-                />
-              </div>
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/10 [animation-delay:3s]">
-                <Image
-                  src="/images/products/masala-peanuts.png"
-                  alt=""
-                  width={280}
-                  height={200}
-                  priority
-                  className="w-full object-cover"
-                />
-              </div>
+            {/* floating price card */}
+            <div className="anim-float absolute -bottom-6 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl shadow-charcoal/15 ring-1 ring-cream-dark sm:left-8 [animation-delay:1.2s]">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10">
+                <ShoppingBag className="h-5 w-5 text-brand" aria-hidden />
+              </span>
+              <span>
+                <span className="block text-sm font-bold text-charcoal">Mix Chavanu</span>
+                <span className="block text-sm font-semibold text-charcoal/60">
+                  From <span className="text-brand">Rs. 55</span> / pack
+                </span>
+              </span>
+            </div>
+            {/* floating fresh chip */}
+            <div className="anim-float absolute -top-4 right-6 rounded-full bg-gold px-4 py-2 text-sm font-bold text-charcoal shadow-lg [animation-delay:2.5s]">
+              100% Fresh
             </div>
           </div>
         </div>
       </section>
 
-      {/* 1b. SCROLLING OFFERS TICKER */}
-      <Ticker />
+      {/* 1b. TRUST BADGES, static pill row */}
+      <section aria-label="Highlights" className="border-b border-cream-dark bg-white">
+        <ul className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-4 py-5 sm:px-6 lg:px-8">
+          {trustBadges.map(({ icon: Icon, label }) => (
+            <li
+              key={label}
+              className="inline-flex items-center gap-2 rounded-full bg-cream px-4 py-2.5 text-sm font-semibold text-charcoal ring-1 ring-cream-dark"
+            >
+              <Icon className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+              {label}
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* 2. CATEGORY SECTION */}
       <section aria-labelledby="categories-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -261,7 +240,7 @@ export default function HomePage() {
                 height={300}
                 className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <p className="p-3 text-center text-sm font-semibold text-charcoal transition-colors group-hover:text-brand">
+              <p className="p-3 text-center text-[15px] font-semibold text-charcoal transition-colors group-hover:text-brand">
                 {category}
               </p>
             </Link>
