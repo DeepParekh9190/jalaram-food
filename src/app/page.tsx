@@ -172,6 +172,7 @@ export default function HomePage() {
                   alt=""
                   width={280}
                   height={200}
+                  priority
                   className="w-full object-cover"
                 />
               </div>
@@ -187,6 +188,7 @@ export default function HomePage() {
                   alt=""
                   width={280}
                   height={200}
+                  priority
                   className="w-full object-cover"
                 />
               </div>
@@ -196,6 +198,7 @@ export default function HomePage() {
                   alt=""
                   width={280}
                   height={200}
+                  priority
                   className="w-full object-cover"
                 />
               </div>
