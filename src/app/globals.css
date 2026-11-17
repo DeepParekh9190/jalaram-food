@@ -2,15 +2,17 @@
 
 /*
  * Jalaram Food, brand design tokens.
- * Palette: Saffron + Charcoal + Cream.
+ * Palette: Peach + Mint + Cream (pastels), charcoal for text only.
  * Colours and fonts are theme tokens, components reference them
- * with Tailwind utilities like bg-brand, text-charcoal, font-gujarati.
+ * with Tailwind utilities like bg-brand, bg-peach, text-charcoal, font-gujarati.
  */
 @theme {
-  --color-brand: #e8820c;
-  --color-brand-dark: #c56a07;
+  --color-brand: #f08a5d;
+  --color-brand-dark: #db6e3c;
+  --color-peach: #ffe8d6;
+  --color-mint: #dff2e6;
   --color-cream: #fff9f0;
-  --color-cream-dark: #f3e7d3;
+  --color-cream-dark: #f5ebdd;
   --color-charcoal: #262626;
   --color-gold: #f4c44e;
 

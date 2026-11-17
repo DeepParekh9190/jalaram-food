@@ -79,7 +79,7 @@ export default function HomePage() {
   return (
     <>
       {/* 1. HERO, bold typographic hero with a floating photo-card collage */}
-      <section className="relative overflow-hidden bg-charcoal text-white">
+      <section className="relative overflow-hidden bg-peach text-charcoal">
         {/* subtle depth: soft radial glows, floating shapes */}
         <div
           aria-hidden
@@ -91,22 +91,22 @@ export default function HomePage() {
         />
         <div
           aria-hidden
-          className="anim-float absolute right-[10%] top-[16%] hidden h-20 w-20 rounded-3xl bg-gold/20 lg:block [animation-delay:2s]"
+          className="anim-float absolute right-[10%] top-[16%] hidden h-20 w-20 rounded-3xl bg-white/70 lg:block [animation-delay:2s]"
         />
         <div
           aria-hidden
-          className="anim-float absolute bottom-[20%] left-[38%] hidden h-12 w-12 rounded-2xl bg-cream/10 lg:block [animation-delay:3.5s]"
+          className="anim-float absolute bottom-[20%] left-[38%] hidden h-12 w-12 rounded-2xl bg-white/50 lg:block [animation-delay:3.5s]"
         />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
           <div>
-            <p className="anim-fade-up inline-flex items-center gap-2 rounded-full bg-cream/10 px-4 py-2 text-sm font-semibold text-gold ring-1 ring-gold/40">
+            <p className="anim-fade-up inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-brand-dark ring-1 ring-brand/30">
               <Sparkles className="h-4 w-4" aria-hidden />
               Fresh batches, every single morning
             </p>
             <h1 className="anim-fade-up anim-delay-1 mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
               Authentic Taste of{" "}
-              <span className="relative inline-block text-gold">
+              <span className="relative inline-block text-brand-dark">
                 Gujarat
                 {/* animated highlight underline */}
                 <svg
@@ -125,17 +125,17 @@ export default function HomePage() {
                 </svg>
               </span>
             </h1>
-            <p className="anim-fade-up anim-delay-2 mt-5 max-w-xl text-lg text-cream/90 sm:text-xl">
+            <p className="anim-fade-up anim-delay-2 mt-5 max-w-xl text-lg text-charcoal/80 sm:text-xl">
               Traditional Gujarati &amp; Kutchi Snacks, Made for Every Moment.
             </p>
-            <p className="anim-fade-up anim-delay-3 mt-2 font-gujarati text-lg text-gold/90">
+            <p className="anim-fade-up anim-delay-3 mt-2 font-gujarati text-lg text-brand-dark">
               સ્વાદ જે દિલમાં ઘર કરી લે, ગુજરાતના પરંપરાગત નમકીન.
             </p>
 
             <div className="anim-fade-up anim-delay-3 mt-9 flex flex-wrap gap-3">
               <Link
                 href="/products"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 font-bold text-white shadow-lg shadow-brand/30 transition-all duration-300 hover:scale-[1.03] hover:bg-brand-dark"
+                className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 font-bold text-charcoal shadow-lg shadow-brand/30 transition-all duration-300 hover:scale-[1.03] hover:bg-brand-dark"
               >
                 Explore Our Snacks
                 <ArrowRight
@@ -145,7 +145,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/cart"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-gold/70 px-8 py-4 font-semibold text-gold transition-all duration-300 hover:scale-[1.03] hover:bg-gold hover:text-charcoal"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-brand px-8 py-4 font-semibold text-brand-dark transition-all duration-300 hover:scale-[1.03] hover:bg-brand hover:text-charcoal"
               >
                 Order Now
               </Link>
@@ -153,9 +153,9 @@ export default function HomePage() {
 
             <ul className="anim-fade-up anim-delay-4 mt-10 flex flex-wrap gap-x-7 gap-y-3">
               {heroHighlights.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-2 text-sm text-cream/85">
-                  <span className="rounded-full bg-cream/10 p-1.5 ring-1 ring-cream/20">
-                    <Icon className="h-4 w-4 text-gold" aria-hidden />
+                <li key={label} className="flex items-center gap-2 text-sm text-charcoal/70">
+                  <span className="rounded-full bg-white/70 p-1.5 ring-1 ring-charcoal/10">
+                    <Icon className="h-4 w-4 text-brand-dark" aria-hidden />
                   </span>
                   {label}
                 </li>
@@ -166,7 +166,7 @@ export default function HomePage() {
           {/* Floating photo collage, small source images stay crisp at card size */}
           <div className="relative mx-auto grid max-w-md grid-cols-2 gap-4 pb-6 lg:max-w-none" aria-hidden>
             <div className="anim-pop anim-delay-2 flex flex-col justify-end gap-4">
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/60 [animation-delay:0.8s]">
+              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/15 [animation-delay:0.8s]">
                 <Image
                   src="/images/products/nylon-sev.png"
                   alt=""
@@ -176,13 +176,13 @@ export default function HomePage() {
                   className="w-full object-cover"
                 />
               </div>
-              <div className="anim-float rounded-3xl bg-brand p-5 shadow-2xl shadow-charcoal/60 [animation-delay:2.2s]">
-                <p className="font-gujarati text-2xl font-bold text-cream">સ્વાદ</p>
-                <p className="mt-1 text-sm text-cream/80">that feels like home</p>
+              <div className="anim-float rounded-3xl bg-brand p-5 shadow-2xl shadow-charcoal/15 [animation-delay:2.2s]">
+                <p className="font-gujarati text-2xl font-bold text-charcoal">સ્વાદ</p>
+                <p className="mt-1 text-sm text-charcoal/80">that feels like home</p>
               </div>
             </div>
             <div className="anim-pop anim-delay-3 mt-10 flex flex-col gap-4">
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/60 [animation-delay:1.6s]">
+              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/15 [animation-delay:1.6s]">
                 <Image
                   src="/images/products/tikha-gathiya.png"
                   alt=""
@@ -192,7 +192,7 @@ export default function HomePage() {
                   className="w-full object-cover"
                 />
               </div>
-              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/60 [animation-delay:3s]">
+              <div className="anim-float overflow-hidden rounded-3xl shadow-2xl shadow-charcoal/15 [animation-delay:3s]">
                 <Image
                   src="/images/products/masala-peanuts.png"
                   alt=""
@@ -286,10 +286,10 @@ export default function HomePage() {
       </section>
 
       {/* 5. WHOLESALE BANNER */}
-      <section className="bg-charcoal py-14 text-white">
+      <section className="bg-mint py-14 text-charcoal">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold sm:text-4xl">Looking for Snacks in Bulk?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-white/80">
+          <p className="mx-auto mt-3 max-w-2xl text-charcoal/70">
             Get in touch with us for wholesale quantities and special bulk-order pricing.
             Perfect for shops, events, weddings and corporate gifting.
           </p>
@@ -299,7 +299,7 @@ export default function HomePage() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 font-bold text-charcoal shadow-md transition-all duration-300 hover:scale-[1.03] hover:bg-brand hover:text-white"
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 font-bold text-charcoal shadow-md transition-all duration-300 hover:scale-[1.03] hover:bg-brand-dark"
           >
             <MessageCircle className="h-5 w-5" aria-hidden />
             Enquire on WhatsApp

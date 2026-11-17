@@ -32,7 +32,7 @@ function PackPicker({
           onClick={() => onChange?.(ps.size)}
           className={
             ps.size === size
-              ? "rounded-full border border-brand bg-brand px-2.5 py-1 text-xs font-semibold text-white"
+              ? "rounded-full border border-brand bg-brand px-2.5 py-1 text-xs font-semibold text-charcoal"
               : "rounded-full border border-cream-dark bg-white px-2.5 py-1 text-xs font-medium text-charcoal hover:border-brand"
           }
         >
@@ -77,7 +77,7 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
         {!product.isAvailable && (
-          <span className="absolute inset-0 flex items-center justify-center bg-charcoal/60 text-sm font-bold uppercase tracking-wide text-white">
+          <span className="absolute inset-0 flex items-center justify-center bg-cream/80 text-sm font-bold uppercase tracking-wide text-charcoal">
             Currently Unavailable
           </span>
         )}
@@ -119,7 +119,7 @@ export function ProductCard({ product }: { product: Product }) {
                   ? `Add ${product.name} (${pack?.size}) to cart`
                   : `${product.name} is currently unavailable`
               }
-              className="flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
+              className="flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-bold text-charcoal transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
             >
               {added ? (
                 <>

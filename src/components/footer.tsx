@@ -10,12 +10,12 @@ export function Footer() {
     .map((p) => ({ name: p.name, href: `/products/${p.slug}` }));
 
   return (
-    <footer className="mt-16 bg-charcoal text-white">
+    <footer className="mt-16 bg-peach text-charcoal">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         {/* Brand */}
         <div>
-          <p className="text-lg font-bold text-gold">{siteConfig.brandName}</p>
-          <p className="mt-3 text-sm leading-relaxed text-white/70">
+          <p className="text-lg font-bold text-brand-dark">{siteConfig.brandName}</p>
+          <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
             {siteConfig.description}
           </p>
           <div className="mt-4 flex gap-3">
@@ -24,7 +24,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram (placeholder link)"
-              className="rounded-full bg-white/10 p-2 transition-colors hover:bg-brand"
+              className="rounded-full bg-white p-2 ring-1 ring-charcoal/10 transition-colors hover:bg-brand hover:text-white"
             >
               <Camera className="h-4 w-4" aria-hidden />
             </a>
@@ -33,7 +33,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat with us on WhatsApp"
-              className="rounded-full bg-white/10 p-2 transition-colors hover:bg-brand"
+              className="rounded-full bg-white p-2 ring-1 ring-charcoal/10 transition-colors hover:bg-brand hover:text-white"
             >
               <MessageCircle className="h-4 w-4" aria-hidden />
             </a>
@@ -42,40 +42,40 @@ export function Footer() {
 
         {/* Quick links */}
         <nav aria-label="Footer quick links">
-          <p className="text-sm font-semibold uppercase tracking-wide text-gold">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-dark">
             Quick Links
           </p>
-          <ul className="mt-3 space-y-2 text-sm text-white/70">
-            <li><Link className="hover:text-white" href="/">Home</Link></li>
-            <li><Link className="hover:text-white" href="/products">Shop</Link></li>
-            <li><Link className="hover:text-white" href="/wholesale">Wholesale Orders</Link></li>
-            <li><Link className="hover:text-white" href="/about">About Us</Link></li>
-            <li><Link className="hover:text-white" href="/contact">Contact Us</Link></li>
-            <li><Link className="hover:text-white" href="/cart">Cart</Link></li>
+          <ul className="mt-3 space-y-2 text-sm text-charcoal/70">
+            <li><Link className="hover:text-brand-dark" href="/">Home</Link></li>
+            <li><Link className="hover:text-brand-dark" href="/products">Shop</Link></li>
+            <li><Link className="hover:text-brand-dark" href="/wholesale">Wholesale Orders</Link></li>
+            <li><Link className="hover:text-brand-dark" href="/about">About Us</Link></li>
+            <li><Link className="hover:text-brand-dark" href="/contact">Contact Us</Link></li>
+            <li><Link className="hover:text-brand-dark" href="/cart">Cart</Link></li>
           </ul>
         </nav>
 
         {/* Categories */}
         <nav aria-label="Footer product categories">
-          <p className="text-sm font-semibold uppercase tracking-wide text-gold">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-dark">
             Categories
           </p>
-          <ul className="mt-3 space-y-2 text-sm text-white/70">
+          <ul className="mt-3 space-y-2 text-sm text-charcoal/70">
             {categories.map((c) => (
               <li key={c}>
-                <Link className="hover:text-white" href={`/products?category=${encodeURIComponent(c)}`}>
+                <Link className="hover:text-brand-dark" href={`/products?category=${encodeURIComponent(c)}`}>
                   {c}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-gold">
+          <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-brand-dark">
             Popular
           </p>
-          <ul className="mt-3 space-y-2 text-sm text-white/70">
+          <ul className="mt-3 space-y-2 text-sm text-charcoal/70">
             {topProducts.map((p) => (
               <li key={p.href}>
-                <Link className="hover:text-white" href={p.href}>{p.name}</Link>
+                <Link className="hover:text-brand-dark" href={p.href}>{p.name}</Link>
               </li>
             ))}
           </ul>
@@ -83,32 +83,32 @@ export function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-gold">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-dark">
             Contact
           </p>
-          <ul className="mt-3 space-y-3 text-sm text-white/70">
+          <ul className="mt-3 space-y-3 text-sm text-charcoal/70">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
               {siteConfig.address}
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-              <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="hover:text-white">
+              <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="hover:text-brand-dark">
                 {siteConfig.phone}
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
+              <a href={`mailto:${siteConfig.email}`} className="hover:text-brand-dark">
                 {siteConfig.email}
               </a>
             </li>
           </ul>
-          <p className="mt-4 text-xs text-white/50">{siteConfig.hours}</p>
+          <p className="mt-4 text-xs text-charcoal/50">{siteConfig.hours}</p>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
+      <div className="border-t border-charcoal/10 py-5 text-center text-xs text-charcoal/50">
         © <CurrentYear /> {siteConfig.brandName}. Sample website for client presentation, 
         all branding, prices and images are placeholders.
       </div>

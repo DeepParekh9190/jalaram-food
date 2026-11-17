@@ -37,7 +37,7 @@ export function Header() {
               className={cn(
                 "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                 pathname === link.href
-                  ? "bg-brand text-white"
+                  ? "bg-brand text-charcoal"
                   : "text-charcoal hover:bg-gold/30"
               )}
             >
@@ -90,7 +90,7 @@ export function Header() {
                   className={cn(
                     "block rounded-xl px-4 py-3 text-base font-medium",
                     pathname === link.href
-                      ? "bg-brand text-white"
+                      ? "bg-brand text-charcoal"
                       : "text-charcoal hover:bg-gold/30"
                   )}
                 >

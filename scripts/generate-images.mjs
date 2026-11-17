@@ -12,10 +12,10 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const img = (...p) => join(root, "public", "images", ...p);
 
 const P = {
-  brand: "#E8820C", // saffron
+  brand: "#F08A5D", // apricot
   cream: "#FFF9F0",
-  creamDark: "#F3E7D3",
-  brown: "#4A2A12",
+  creamDark: "#F5EBDD",
+  charcoal: "#262626",
   gold: "#F4C44E",
 };
 
@@ -41,13 +41,13 @@ function plate(title, accent, w = 800, h = 600) {
 <g clip-path="url(#c)">
 <rect width="${w}" height="${h}" fill="${P.cream}"/>
 <circle cx="${w * 0.85}" cy="${h * 0.12}" r="${h * 0.16}" fill="${P.gold}" opacity="0.35"/>
-<circle cx="${w * 0.1}" cy="${h * 0.9}" r="${h * 0.12}" fill="${P.brown}" opacity="0.15"/>
+<circle cx="${w * 0.1}" cy="${h * 0.9}" r="${h * 0.12}" fill="${P.charcoal}" opacity="0.15"/>
 <ellipse cx="${cx}" cy="${cy}" rx="${r * 1.45}" ry="${r * 0.62}" fill="#ffffff" stroke="${P.creamDark}" stroke-width="4"/>
 <ellipse cx="${cx}" cy="${cy}" rx="${r * 1.15}" ry="${r * 0.45}" fill="${P.creamDark}" opacity="0.6"/>
 ${wavySnack(cx, cy, r, accent)}
-<rect x="16" y="16" rx="10" width="${w * 0.36}" height="30" fill="${P.brown}" opacity="0.75"/>
+<rect x="16" y="16" rx="10" width="${w * 0.36}" height="30" fill="${P.charcoal}" opacity="0.75"/>
 <text x="28" y="37" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff">SAMPLE IMAGE</text>
-<text x="${cx}" y="${h * 0.93}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${Math.max(16, w * 0.05)}" font-weight="bold" fill="${P.charcoal || P.brown}">${title}</text>
+<text x="${cx}" y="${h * 0.93}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${Math.max(16, w * 0.05)}" font-weight="bold" fill="${P.charcoal || P.charcoal}">${title}</text>
 </g></svg>`;
 }
 
