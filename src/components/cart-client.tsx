@@ -73,7 +73,7 @@ export function CartClient() {
         </p>
         <Link
           href="/products"
-          className="mt-6 inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-charcoal shadow-md hover:bg-brand-dark"
+          className="mt-6 inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-white shadow-md hover:bg-brand-dark"
         >
           Browse Our Snacks
         </Link>
@@ -97,7 +97,7 @@ export function CartClient() {
         </p>
         <Link
           href="/products"
-          className="mt-6 inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-charcoal shadow-md hover:bg-brand-dark"
+          className="mt-6 inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-white shadow-md hover:bg-brand-dark"
         >
           Continue Shopping
         </Link>
@@ -265,7 +265,7 @@ export function CartClient() {
             <button
               type="button"
               onClick={handlePlaceOrder}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 font-bold text-charcoal shadow-md transition-colors hover:bg-[#1fb955]"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 font-bold text-white shadow-md transition-colors hover:bg-[#1fb955]"
             >
               <Send className="h-5 w-5" aria-hidden />
               Place Order on WhatsApp

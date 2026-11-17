@@ -32,7 +32,7 @@ function PackPicker({
           onClick={() => onChange?.(ps.size)}
           className={
             ps.size === size
-              ? "rounded-full border border-brand bg-brand px-2.5 py-1 text-xs font-semibold text-charcoal"
+              ? "rounded-full border border-brand bg-brand px-2.5 py-1 text-xs font-semibold text-white"
               : "rounded-full border border-cream-dark bg-white px-2.5 py-1 text-xs font-medium text-charcoal hover:border-brand"
           }
         >
@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {product.isBestseller && product.isAvailable && (
-          <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-charcoal shadow">
+          <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-white shadow">
             Bestseller
           </span>
         )}
@@ -105,7 +105,7 @@ export function ProductCard({ product }: { product: Product }) {
             <Link
               href={`/products/${product.slug}`}
               aria-label={`View details for ${product.name}`}
-              className="flex items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-xs font-semibold text-charcoal transition-colors hover:border-brand hover:text-brand"
+              className="flex items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-brand hover:text-brand"
             >
               <Eye className="h-3.5 w-3.5" aria-hidden />
               <span className="hidden sm:inline">Details</span>
@@ -119,7 +119,7 @@ export function ProductCard({ product }: { product: Product }) {
                   ? `Add ${product.name} (${pack?.size}) to cart`
                   : `${product.name} is currently unavailable`
               }
-              className="flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-bold text-charcoal transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
+              className="flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
             >
               {added ? (
                 <>

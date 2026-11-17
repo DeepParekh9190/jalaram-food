@@ -12,7 +12,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const img = (...p) => join(root, "public", "images", ...p);
 
 const P = {
-  brand: "#F08A5D", // apricot
+  brand: "#D62828", // snack-brand red
   cream: "#FFF9F0",
   creamDark: "#F5EBDD",
   charcoal: "#262626",

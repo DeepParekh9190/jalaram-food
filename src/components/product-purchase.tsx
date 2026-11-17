@@ -117,7 +117,7 @@ export function ProductPurchase({ product }: { product: Product }) {
         <button
           type="button"
           onClick={handleAdd}
-          className="flex items-center gap-2 rounded-full bg-brand px-8 py-3.5 font-bold text-charcoal shadow-md transition-colors hover:bg-brand-dark"
+          className="flex items-center gap-2 rounded-full bg-brand px-8 py-3.5 font-bold text-white shadow-md transition-colors hover:bg-brand-dark"
         >
           {added ? (
             <>

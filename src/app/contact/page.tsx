@@ -65,7 +65,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-start gap-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-cream-dark">
-            <span className="rounded-2xl bg-mint p-3 text-brand-dark">
+            <span className="rounded-2xl bg-gold/30 p-3 text-brand-dark">
               <MapPin className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -85,7 +85,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-mint p-8 text-charcoal">
+        <div className="rounded-3xl bg-gold/25 p-8 text-charcoal">
           <h2 className="text-2xl font-bold">Want to order right away?</h2>
           <p className="mt-3 text-charcoal/70">
             Build your cart on the shop page and send the full order to us on WhatsApp, no
@@ -94,7 +94,7 @@ export default function ContactPage() {
           <div className="mt-6 flex flex-col gap-3">
             <Link
               href="/products"
-              className="rounded-full bg-brand px-6 py-3 text-center font-bold text-charcoal hover:bg-brand-dark"
+              className="rounded-full bg-brand px-6 py-3 text-center font-bold text-white hover:bg-brand-dark"
             >
               Start Shopping
             </Link>

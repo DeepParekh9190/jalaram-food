@@ -63,7 +63,7 @@ export default function AboutPage() {
       <div className="mt-10 text-center">
         <Link
           href="/products"
-          className="inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-charcoal shadow-md hover:bg-brand-dark"
+          className="inline-block rounded-full bg-brand px-8 py-3.5 font-bold text-white shadow-md hover:bg-brand-dark"
         >
           Explore Our Snacks
         </Link>

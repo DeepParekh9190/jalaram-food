@@ -2,19 +2,17 @@
 
 /*
  * Jalaram Food, brand design tokens.
- * Palette: Peach + Mint + Cream (pastels), charcoal for text only.
+ * Palette: Bold Red + Gold + Cream (classic Indian snack-brand look).
  * Colours and fonts are theme tokens, components reference them
- * with Tailwind utilities like bg-brand, bg-peach, text-charcoal, font-gujarati.
+ * with Tailwind utilities like bg-brand, text-gold, font-gujarati.
  */
 @theme {
-  --color-brand: #f08a5d;
-  --color-brand-dark: #db6e3c;
-  --color-peach: #ffe8d6;
-  --color-mint: #dff2e6;
+  --color-brand: #d62828;
+  --color-brand-dark: #a61e1e;
+  --color-gold: #ffc72c;
   --color-cream: #fff9f0;
   --color-cream-dark: #f5ebdd;
   --color-charcoal: #262626;
-  --color-gold: #f4c44e;
 
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-gujarati: var(--font-noto-gujarati), var(--font-poppins), sans-serif;
@@ -101,11 +99,26 @@ body {
   animation-delay: 0.6s;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* seamless scrolling ticker, content is rendered twice */
+.anim-marquee {
+  animation: marquee 22s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .anim-fade-up,
   .anim-fade-in,
   .anim-pop,
-  .anim-float {
+  .anim-float,
+  .anim-marquee {
     animation: none;
   }
 }

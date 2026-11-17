@@ -99,7 +99,7 @@ export function ShopClient() {
             className={cn(
               "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
               category === c
-                ? "bg-brand text-charcoal"
+                ? "bg-brand text-cream"
                 : "bg-white text-charcoal ring-1 ring-cream-dark hover:ring-brand"
             )}
           >
@@ -123,7 +123,7 @@ export function ShopClient() {
               setQuery("");
               setCategory("All");
             }}
-            className="mt-5 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-charcoal hover:bg-brand-dark"
+            className="mt-5 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-cream hover:bg-brand-dark"
           >
             Clear filters
           </button>
