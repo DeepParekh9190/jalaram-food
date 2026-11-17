@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {product.isBestseller && product.isAvailable && (
-          <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-white shadow">
+          <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-charcoal shadow">
             Bestseller
           </span>
         )}
