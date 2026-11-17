@@ -17,6 +17,7 @@ import {
 import { categories, getBestsellers } from "@/data/products";
 import { siteConfig, whatsappConfig } from "@/data/site-config";
 import { ProductCard } from "@/components/product-card";
+import { Reveal } from "@/components/reveal";
 
 const categoryImages: Record<string, string> = {
   Sev: "/images/categories/sev.jpg",
@@ -203,9 +204,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1b. TRUST BADGES, static pill row */}
+      {/* 1b. TRUST BADGES: marquee on mobile, static pills from sm up */}
       <section aria-label="Highlights" className="border-b border-cream-dark bg-white">
-        <ul className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-4 py-5 sm:px-6 lg:px-8">
+        {/* mobile: seamless scrolling strip */}
+        <div className="overflow-hidden py-3 sm:hidden" aria-hidden>
+          <div className="anim-marquee flex w-max items-center">
+            {[...trustBadges, ...trustBadges].map((badge, i) => (
+              <span
+                key={i}
+                className="flex items-center gap-2 whitespace-nowrap px-5 text-sm font-semibold text-charcoal"
+              >
+                <badge.icon className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+                {badge.label}
+              </span>
+            ))}
+          </div>
+        </div>
+        {/* desktop: static pills */}
+        <ul className="mx-auto hidden max-w-7xl flex-wrap items-center justify-center gap-3 px-4 py-5 sm:flex sm:px-6 lg:px-8">
           {trustBadges.map(({ icon: Icon, label }) => (
             <li
               key={label}
@@ -227,23 +243,24 @@ export default function HomePage() {
           From everyday chai-time munching to festive hampers.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {categories.map((category) => (
-            <Link
-              key={category}
-              href={`/products?category=${encodeURIComponent(category)}`}
-              className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
-              <Image
-                src={categoryImages[category]}
-                alt={`${category} snacks`}
-                width={400}
-                height={300}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <p className="p-3 text-center text-[15px] font-semibold text-charcoal transition-colors group-hover:text-brand">
-                {category}
-              </p>
-            </Link>
+          {categories.map((category, i) => (
+            <Reveal key={category} delay={i * 60}>
+              <Link
+                href={`/products?category=${encodeURIComponent(category)}`}
+                className="group block overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <Image
+                  src={categoryImages[category]}
+                  alt={`${category} snacks`}
+                  width={400}
+                  height={300}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <p className="p-3 text-center text-[15px] font-semibold text-charcoal transition-colors group-hover:text-brand">
+                  {category}
+                </p>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -263,8 +280,10 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-            {bestsellers.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {bestsellers.map((product, i) => (
+              <Reveal key={product.id} delay={(i % 4) * 60}>
+                <ProductCard product={product} />
+              </Reveal>
             ))}
           </div>
           <div className="mt-8 text-center sm:hidden">
@@ -281,24 +300,25 @@ export default function HomePage() {
           Why Choose Us
         </h2>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-            >
-              <span className="inline-flex rounded-2xl bg-charcoal/10 p-3 text-charcoal">
-                <Icon className="h-6 w-6" aria-hidden />
-              </span>
-              <h3 className="mt-4 font-semibold text-charcoal">{title}</h3>
-              <p className="mt-1.5 text-sm text-charcoal/60">{text}</p>
-            </div>
+          {benefits.map(({ icon: Icon, title, text }, i) => (
+            <Reveal key={title} delay={i * 70}>
+              <div
+                className="h-full rounded-3xl bg-white p-6 shadow-sm ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <span className="inline-flex rounded-2xl bg-charcoal/10 p-3 text-charcoal">
+                  <Icon className="h-6 w-6" aria-hidden />
+                </span>
+                <h3 className="mt-4 font-semibold text-charcoal">{title}</h3>
+                <p className="mt-1.5 text-sm text-charcoal/60">{text}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 5. WHOLESALE BANNER */}
       <section className="bg-cream-dark py-14 text-charcoal">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <Reveal className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold sm:text-4xl">Looking for Snacks in Bulk?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-charcoal/70">
             Get in touch with us for wholesale quantities and special bulk-order pricing.
@@ -315,23 +335,26 @@ export default function HomePage() {
             <MessageCircle className="h-5 w-5" aria-hidden />
             Enquire on WhatsApp
           </a>
-        </div>
+        </Reveal>
       </section>
 
       {/* 6. BRAND STORY */}
       <section aria-labelledby="story-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Image
-            src="/images/brand-story.jpg"
-            alt="Traditional Gujarati snack preparation"
-            width={800}
-            height={600}
-            className="w-full rounded-[2.5rem] shadow-md"
-          />
-          <div>
-            <h2 id="story-heading" className="text-3xl font-bold text-charcoal">
-              Our Story
-            </h2>
+          <Reveal>
+            <Image
+              src="/images/brand-story.jpg"
+              alt="Traditional Gujarati snack preparation"
+              width={800}
+              height={600}
+              className="w-full rounded-[2.5rem] shadow-md"
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <div>
+              <h2 id="story-heading" className="text-3xl font-bold text-charcoal">
+                Our Story
+              </h2>
             <p className="mt-4 leading-relaxed text-charcoal/70">
               {siteConfig.brandName} began with a simple belief: the taste of a Gujarati
               farsan shop should travel anywhere. We source sev, gathiya, fafda and
@@ -349,7 +372,8 @@ export default function HomePage() {
             >
               Read more about us
             </Link>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -369,20 +393,21 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="rounded-3xl bg-cream p-6 ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-              >
-                <Quote className="h-6 w-6 text-brand" aria-hidden />
-                <blockquote className="mt-3 text-sm leading-relaxed text-charcoal/80">
-                  “{t.text}”
-                </blockquote>
-                <figcaption className="mt-4 text-sm font-semibold text-charcoal">
-                  {t.name}
-                  <span className="ml-1 font-normal text-charcoal/50">· {t.city}</span>
-                </figcaption>
-              </figure>
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={i * 80}>
+                <figure
+                  className="h-full rounded-3xl bg-cream p-6 ring-1 ring-cream-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                >
+                  <Quote className="h-6 w-6 text-brand" aria-hidden />
+                  <blockquote className="mt-3 text-sm leading-relaxed text-charcoal/80">
+                    “{t.text}”
+                  </blockquote>
+                  <figcaption className="mt-4 text-sm font-semibold text-charcoal">
+                    {t.name}
+                    <span className="ml-1 font-normal text-charcoal/50">· {t.city}</span>
+                  </figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
         </div>
