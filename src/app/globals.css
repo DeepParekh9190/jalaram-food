@@ -122,3 +122,24 @@ body {
     animation: none;
   }
 }
+
+/* Order bill: print only the bill card, no site chrome or form controls */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .print-bill,
+  .print-bill * {
+    visibility: visible !important;
+  }
+  .print-bill {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

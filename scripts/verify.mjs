@@ -26,6 +26,7 @@ const {
   resolveLine,
   buildOrderMessage,
   buildWhatsAppUrl,
+  orderRefFor,
 } = await import(new URL("../src/lib/whatsapp.ts", import.meta.url));
 
 let passed = 0;
@@ -146,13 +147,27 @@ check("order message totals add up correctly", () => {
     { productId: sev.id, size: "500g", quantity: 2 }, // 120 × 2 = 240
     { productId: gath.id, size: "1kg", quantity: 1 }, // 240
   ];
-  const msg = buildOrderMessage(
-    { name: "Test User", mobile: "9876543210", city: "Rajkot", address: "Test address 123" },
-    lines
-  );
-  assert.ok(msg.includes("Total Items: 3"), "wrong item count");
-  assert.ok(msg.includes("Estimated Total: ₹480"), "wrong total");
-  assert.ok(msg.includes("Nylon Sev") && msg.includes("Pack: 500g"), "missing product details");
+  const customer = {
+    name: "Test User",
+    mobile: "9876543210",
+    state: "Gujarat",
+    city: "Rajkot",
+    pincode: "360001",
+    address: "Test address 123",
+  };
+  const ref = orderRefFor(lines);
+  const msg = buildOrderMessage(customer, lines, ref);
+  assert.ok(msg.includes("Total items: 3"), "wrong item count");
+  assert.ok(msg.includes("Item total: ₹480"), "wrong item total");
+  assert.ok(msg.includes("PAYABLE: ₹540"), `wrong payable total:\n${msg}`);
+  assert.ok(msg.includes("State: Gujarat") && msg.includes("PIN: 360001"), "missing address fields");
+  assert.ok(msg.includes("Ref: " + ref), "missing order reference");
+  assert.ok(msg.includes("Nylon Sev") && msg.includes("₹120 × 2 = ₹240"), "missing item details");
+});
+check("order reference is stable for the same cart", () => {
+  const lines = [{ productId: "sev-001", size: "500g", quantity: 2 }];
+  assert.equal(orderRefFor(lines), orderRefFor(lines));
+  assert.match(orderRefFor(lines), /^JF-[0-9]{4}$/);
 });
 
 console.log("\n4. WhatsApp Click-to-Chat URL (Phase 10)");

@@ -4,7 +4,13 @@
  * button only opens WhatsApp with a prefilled message, which the
  * customer still has to press Send on.
  */
-import { deliveryPolicy, deliveryZones, rajkotCityName, whatsappConfig } from "../data/site-config.ts";
+import {
+  deliveryPolicy,
+  deliveryZones,
+  rajkotCityName,
+  siteConfig,
+  whatsappConfig,
+} from "../data/site-config.ts";
 import { products } from "../data/products.ts";
 import type { Product } from "@/data/products";
 
@@ -17,7 +23,9 @@ export type CartLine = {
 export type CustomerDetails = {
   name: string;
   mobile: string;
+  state: string;
   city: string;
+  pincode: string;
   address: string;
   instructions?: string;
 };
@@ -102,10 +110,19 @@ export function resolveLine(line: CartLine): {
   return { product, pack, unitPrice, lineTotal: unitPrice * line.quantity };
 }
 
-/** Build the WhatsApp message exactly as specified in Phase 10 */
+/** Stable, short reference derived from the cart contents */
+export function orderRefFor(lines: CartLine[]): string {
+  const seed = lines.map((l) => `${l.productId}|${l.size}|${l.quantity}`).join(";");
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  return `JF-${(hash % 9000) + 1000}`;
+}
+
+/** Structured order message, matching the on-page order bill */
 export function buildOrderMessage(
   customer: CustomerDetails,
-  lines: CartLine[]
+  lines: CartLine[],
+  ref: string = orderRefFor(lines)
 ): string {
   const resolved = lines
     .map((l) => {
@@ -118,39 +135,50 @@ export function buildOrderMessage(
   const total = resolved.reduce((sum, l) => sum + l.lineTotal, 0);
   const weightGrams = getCartWeightGrams(lines);
   const deliveryCharge = getDeliveryCharge(customer.city, total, weightGrams);
+  const billedKg = Math.ceil(weightGrams / 1000);
 
   const itemLines = resolved
     .map(
       (l, i) =>
-        `${i + 1}. ${l.product.name}\n   Pack: ${l.pack.size}\n   Quantity: ${l.line.quantity}\n   Price: ₹${l.lineTotal}`
+        `${i + 1}) ${l.product.name} — ${l.pack.size}\n   ₹${l.unitPrice} × ${
+          l.line.quantity
+        } = ₹${l.lineTotal}`
     )
-    .join("\n\n");
+    .join("\n");
+
+  const deliveryLabel =
+    deliveryCharge === 0
+      ? "FREE"
+      : `₹${deliveryCharge} (${billedKg} kg × ₹${deliveryPolicy.perKg})`;
 
   const message = [
-    "Hello, I would like to place an order.",
+    `🛒 NEW ORDER — ${siteConfig.brandName}`,
+    `Ref: ${ref} · ${new Date().toLocaleString("en-IN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    })}`,
     "",
-    "Customer Details:",
+    "CUSTOMER",
     `Name: ${customer.name}`,
     `Mobile: ${customer.mobile}`,
+    `State: ${customer.state}`,
     `City: ${customer.city}`,
+    `PIN: ${customer.pincode}`,
     `Address: ${customer.address}`,
     customer.instructions ? `Instructions: ${customer.instructions}` : null,
     "",
-    getDeliveryZone(customer.city).message,
-    "",
-    "Order Details:",
-    "",
+    "ITEMS",
     itemLines,
     "",
-    `Total Items: ${totalItems}`,
-    `Total Weight: ${(weightGrams / 1000).toFixed(2)} kg`,
-    `Estimated Total: ₹${total}`,
-    `Delivery Charges: ${deliveryCharge === 0 ? "FREE" : `₹${deliveryCharge}`}`,
-    `Payable Total: ₹${total + deliveryCharge}`,
+    `Total items: ${totalItems}`,
+    `Total weight: ${(weightGrams / 1000).toFixed(2)} kg`,
+    `Item total: ₹${total}`,
+    `Delivery: ${deliveryLabel}`,
+    `PAYABLE: ₹${total + deliveryCharge}`,
     "",
-    "Please confirm the order and delivery details.",
+    getDeliveryZone(customer.city).message,
     "",
-    "Thank you!",
+    "Please confirm stock, delivery date and final amount.",
   ]
     .filter((line) => line !== null)
     .join("\n");
@@ -165,11 +193,12 @@ export function buildWhatsAppUrl(number: string, message: string): string {
 /** Full flow: validate the resolved number, build the URL, open WhatsApp */
 export function openWhatsAppOrder(
   customer: CustomerDetails,
-  lines: CartLine[]
+  lines: CartLine[],
+  ref?: string
 ): boolean {
   const number = getWhatsAppNumber(customer.city);
   if (!isValidWhatsAppNumber(number)) return false; // never expose a bad number
-  const url = buildWhatsAppUrl(number, buildOrderMessage(customer, lines));
+  const url = buildWhatsAppUrl(number, buildOrderMessage(customer, lines, ref));
   window.open(url, "_blank", "noopener");
   return true;
 }

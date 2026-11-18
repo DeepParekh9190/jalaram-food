@@ -74,11 +74,7 @@ export const whatsappConfig = {
 /** Cities that route to the Rajkot number (compare lowercase after trim) */
 export const rajkotCityName = "rajkot";
 
-/**
- * City list for the checkout location dropdown.
- * The first option (Rajkot) routes to the city team number,
- * all others (and "Other") route to the dispatch number.
- */
+/** Cities offered as suggestions in checkout; customers may type any city */
 export const deliveryCities = [
   "Rajkot",
   "Ahmedabad",
@@ -97,6 +93,45 @@ export const deliveryCities = [
   "Gondal",
   "Jetpur",
   "Other",
+] as const;
+
+/** Indian states and union territories for the checkout State dropdown */
+export const indianStates = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Andaman & Nicobar Islands",
+  "Chandigarh",
+  "Dadra & Nagar Haveli and Daman & Diu",
+  "Delhi",
+  "Jammu & Kashmir",
+  "Ladakh",
+  "Puducherry",
 ] as const;
 
 /** Delivery charge rules, shared by the UI and the WhatsApp order message */
