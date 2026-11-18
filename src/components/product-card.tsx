@@ -8,7 +8,7 @@ import type { Product } from "@/data/products";
 import { useCart } from "@/components/cart-provider";
 import { formatINR } from "@/lib/utils";
 
-/** Compact pack-size picker: wraps on tablet+, scrolls in one line on phones */
+/** Pack sizes as a segmented control; scrolls on phones when there are many */
 function PackPicker({
   product,
   size,
@@ -19,11 +19,19 @@ function PackPicker({
   onChange?: (size: string) => void;
 }) {
   if (product.packSizes.length === 1) {
-    return <span className="text-sm text-charcoal/60">{product.packSizes[0].size}</span>;
+    return (
+      <span className="inline-flex rounded-full bg-cream px-3 py-1.5 text-sm text-charcoal/70">
+        {product.packSizes[0].size}
+      </span>
+    );
   }
   return (
     <div
-      className="flex flex-nowrap gap-1.5 overflow-x-auto pb-1 sm:flex-wrap sm:pb-0"
+      className={`inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-cream p-1 ${
+        product.packSizes.length > 2
+          ? "[mask-image:linear-gradient(to_right,black_85%,transparent)] sm:[mask-image:none]"
+          : ""
+      }`}
       role="radiogroup"
       aria-label="Pack size"
     >
@@ -34,11 +42,11 @@ function PackPicker({
           role="radio"
           aria-checked={ps.size === size}
           onClick={() => onChange?.(ps.size)}
-          className={
+          className={`shrink-0 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
             ps.size === size
-              ? "shrink-0 rounded-full border border-brand bg-brand px-3 py-1.5 text-sm font-semibold text-white"
-              : "shrink-0 rounded-full border border-cream-dark bg-white px-3 py-1.5 text-sm font-medium text-charcoal hover:border-brand"
-          }
+              ? "bg-brand text-white shadow-sm"
+              : "text-charcoal/70 hover:bg-white hover:text-charcoal"
+          }`}
         >
           {ps.size}
         </button>
@@ -66,23 +74,27 @@ export function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-cream-dark transition-shadow hover:shadow-lg">
+    <article
+      className={`group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-lg ${
+        cartLine ? "bg-brand/[0.02] ring-2 ring-brand/60" : "ring-1 ring-cream-dark"
+      }`}
+    >
       <div className="flex sm:block">
-        {/* Phones: 112px thumbnail on the left. Tablet+: full-width photo on top. */}
+        {/* Phones: 128px thumbnail on the left. Tablet+: full-width photo on top. */}
         <Link
           href={`/products/${product.slug}`}
-          className="relative block h-28 w-28 shrink-0 overflow-hidden bg-cream sm:aspect-[4/3] sm:h-auto sm:w-full"
+          className="relative block h-32 w-32 shrink-0 overflow-hidden bg-cream sm:aspect-[4/3] sm:h-auto sm:w-full"
           aria-label={`View details for ${product.name}`}
         >
           <Image
             src={product.image}
             alt={`${product.name}, ${product.category}`}
             fill
-            sizes="(max-width: 640px) 112px, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            sizes="(max-width: 640px) 128px, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           {product.isBestseller && product.isAvailable && (
-            <span className="absolute left-2 top-2 rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold text-charcoal shadow sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-xs">
+            <span className="absolute right-0 top-0 rounded-es-xl rounded-tr-3xl bg-gold px-2 py-1 text-[10px] font-bold text-charcoal shadow sm:px-2.5 sm:text-xs">
               Bestseller
             </span>
           )}
@@ -103,7 +115,7 @@ export function ProductCard({ product }: { product: Product }) {
 
           <Link
             href={`/products/${product.slug}`}
-            className="line-clamp-2 text-base font-semibold text-charcoal hover:text-brand sm:text-lg"
+            className="line-clamp-2 min-h-[3rem] text-base font-semibold leading-6 text-charcoal hover:text-brand sm:text-lg"
           >
             {product.name}
           </Link>
@@ -114,16 +126,16 @@ export function ProductCard({ product }: { product: Product }) {
 
           <PackPicker product={product} size={size} onChange={setSize} />
 
-          <div className="mt-auto flex flex-col gap-2 pt-1 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-auto flex items-center justify-between gap-2 pt-1">
             <span className="text-lg font-bold text-charcoal">{formatINR(pack?.price ?? 0)}</span>
             <div className="flex gap-1.5">
               <Link
                 href={`/products/${product.slug}`}
                 aria-label={`View details for ${product.name}`}
-                className="flex items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-brand hover:text-brand"
+                className="hidden items-center gap-1 rounded-full border border-cream-dark px-3 py-2 text-sm font-semibold text-charcoal transition-colors hover:border-brand hover:text-brand sm:flex"
               >
                 <Eye className="h-3.5 w-3.5" aria-hidden />
-                <span className="hidden sm:inline">Details</span>
+                Details
               </Link>
 
               {cartLine && product.isAvailable ? (
@@ -166,7 +178,7 @@ export function ProductCard({ product }: { product: Product }) {
                       ? `Add ${product.name} (${pack?.size}) to cart`
                       : `${product.name} is currently unavailable`
                   }
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20 sm:flex-none"
+                  className="flex items-center justify-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-charcoal/20"
                 >
                   <Plus className="h-3.5 w-3.5" aria-hidden /> Add
                 </button>
