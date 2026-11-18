@@ -4,7 +4,7 @@
  * button only opens WhatsApp with a prefilled message, which the
  * customer still has to press Send on.
  */
-import { deliveryZones, rajkotCityName, whatsappConfig } from "../data/site-config.ts";
+import { deliveryPolicy, deliveryZones, rajkotCityName, whatsappConfig } from "../data/site-config.ts";
 import { products } from "../data/products.ts";
 import type { Product } from "@/data/products";
 
@@ -39,9 +39,48 @@ export function isRajkotCity(city: string): boolean {
   return normalizeCity(city) === rajkotCityName;
 }
 
+/** Rajkot & Bhuj share the lower free-delivery threshold */
+export function isLocalDeliveryCity(city: string): boolean {
+  const normalized = normalizeCity(city);
+  return (
+    normalized === rajkotCityName ||
+    normalized === "bhuj" ||
+    normalized === "bhuj (kutch)"
+  );
+}
+
+/** Pack labels like "500g", "1kg", "1.2kg Box" → grams */
+export function packWeightGrams(size: string): number {
+  const match = size.match(/([\d.]+)\s*(kg|g)/i);
+  if (!match) return 0;
+  return Math.round(Number(match[1]) * (match[2].toLowerCase() === "kg" ? 1000 : 1));
+}
+
+/** Total shipping weight of a cart, in grams */
+export function getCartWeightGrams(lines: CartLine[]): number {
+  return lines.reduce(
+    (sum, line) => sum + packWeightGrams(line.size) * line.quantity,
+    0
+  );
+}
+
+/** ₹30/kg (rounded up to whole kg) unless a free-delivery threshold is met */
+export function getDeliveryCharge(
+  city: string,
+  orderTotal: number,
+  weightGrams: number
+): number {
+  if (isLocalDeliveryCity(city) && orderTotal > deliveryPolicy.localFreeAbove) return 0;
+  if (orderTotal > deliveryPolicy.indiaFreeAbove) return 0;
+  return Math.ceil(weightGrams / 1000) * deliveryPolicy.perKg;
+}
+
 /** Delivery info for the selected city, used in the checkout UI */
 export function getDeliveryZone(city: string) {
-  return isRajkotCity(city) ? deliveryZones.rajkot : deliveryZones.other;
+  const normalized = normalizeCity(city);
+  if (normalized === rajkotCityName) return deliveryZones.rajkot;
+  if (normalized === "bhuj" || normalized === "bhuj (kutch)") return deliveryZones.bhuj;
+  return deliveryZones.other;
 }
 
 /** A number is usable only if it's 10–15 digits (optionally with country code) */
@@ -77,6 +116,8 @@ export function buildOrderMessage(
 
   const totalItems = resolved.reduce((sum, l) => sum + l.line.quantity, 0);
   const total = resolved.reduce((sum, l) => sum + l.lineTotal, 0);
+  const weightGrams = getCartWeightGrams(lines);
+  const deliveryCharge = getDeliveryCharge(customer.city, total, weightGrams);
 
   const itemLines = resolved
     .map(
@@ -95,16 +136,17 @@ export function buildOrderMessage(
     `Address: ${customer.address}`,
     customer.instructions ? `Instructions: ${customer.instructions}` : null,
     "",
-    isRajkotCity(customer.city)
-      ? deliveryZones.rajkot.message
-      : deliveryZones.other.message,
+    getDeliveryZone(customer.city).message,
     "",
     "Order Details:",
     "",
     itemLines,
     "",
     `Total Items: ${totalItems}`,
+    `Total Weight: ${(weightGrams / 1000).toFixed(2)} kg`,
     `Estimated Total: ₹${total}`,
+    `Delivery Charges: ${deliveryCharge === 0 ? "FREE" : `₹${deliveryCharge}`}`,
+    `Payable Total: ₹${total + deliveryCharge}`,
     "",
     "Please confirm the order and delivery details.",
     "",

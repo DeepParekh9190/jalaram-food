@@ -67,8 +67,8 @@ export function WholesaleClient() {
       .filter((l) => l !== null)
       .join("\n");
 
-    // Wholesale enquiries go to the dedicated wholesale number from site-config
-    const number = whatsappConfig.wholesaleNumber;
+    // Wholesale enquiries go to the official WhatsApp number from site-config
+    const number = whatsappConfig.whatsappNumber;
     if (!isValidWhatsAppNumber(number)) {
       setErrors({ products: "WhatsApp number is not configured. Please contact us directly." });
       return;

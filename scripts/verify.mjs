@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-const { products, getProductBySlug } = await import(
+const { products, categories, getProductBySlug } = await import(
   new URL("../src/data/products.ts", import.meta.url)
 );
 const { siteConfig, whatsappConfig } = await import(
@@ -21,6 +21,8 @@ const {
   isValidWhatsAppNumber,
   isRajkotCity,
   getDeliveryZone,
+  getCartWeightGrams,
+  getDeliveryCharge,
   resolveLine,
   buildOrderMessage,
   buildWhatsAppUrl,
@@ -63,8 +65,22 @@ check("no unavailable product is marked bestseller/featured active", () => {
 });
 check("sample products cover all required snack types", () => {
   const names = products.map((p) => p.name.toLowerCase()).join("|");
-  for (const snack of ["sev", "gathiya", "fafda", "papdi", "peanut", "chana dal", "khakhra"]) {
+  for (const snack of ["sev", "gathiya", "papdi", "peanut", "chana dal", "khakhra"]) {
     assert.ok(names.includes(snack), `missing snack type: ${snack}`);
+  }
+});
+check("new category structure, no combos or SVG product images", () => {
+  assert.deepEqual([...categories], [
+    "Roasted Items",
+    "Maharashtra Special",
+    "Saurashtra Special",
+    "Kutch Special",
+    "Sweet",
+    "Bakery",
+  ]);
+  for (const p of products) {
+    assert.ok(!p.image.endsWith(".svg"), `${p.id}: SVG placeholder image still in use`);
+    assert.notEqual(p.category, "Special Combos", `${p.id}: combo category still in use`);
   }
 });
 
@@ -89,6 +105,27 @@ check("number validation rejects empty/invalid, accepts valid", () => {
   assert.equal(isValidWhatsAppNumber(""), false);
   assert.equal(isValidWhatsAppNumber("91XXXXXXXXXX"), false);
   assert.equal(isValidWhatsAppNumber("919876543210"), true);
+});
+
+console.log("\n2b. Delivery charges by city, order value and weight");
+check("pack labels resolve to grams", () => {
+  assert.equal(getCartWeightGrams([
+    { productId: "x", size: "500g", quantity: 2 },
+    { productId: "y", size: "1.2kg Box", quantity: 1 },
+  ]), 2200);
+});
+check("free above ₹2,000 India / ₹500 Rajkot & Bhuj, else ₹30 per kg", () => {
+  assert.equal(getDeliveryCharge("Rajkot", 600, 1000), 0);
+  assert.equal(getDeliveryCharge("Bhuj (Kutch)", 600, 1000), 0);
+  assert.equal(getDeliveryCharge("Rajkot", 400, 1000), 30);
+  assert.equal(getDeliveryCharge("Mumbai", 2100, 5000), 0);
+  assert.equal(getDeliveryCharge("Mumbai", 1000, 2000), 60);
+  assert.equal(getDeliveryCharge("Surat", 1000, 1500), 60); // rounds up to 2 kg
+});
+check("official contact number is used everywhere", () => {
+  assert.equal(whatsappConfig.whatsappNumber, "919327012723");
+  assert.ok(siteConfig.whatsappCatalog.includes("919327012723"));
+  assert.ok(siteConfig.phone.includes("93270"));
 });
 
 console.log("\n3. Cart totals from current product data (Phases 5 & 8)");

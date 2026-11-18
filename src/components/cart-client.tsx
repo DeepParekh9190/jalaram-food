@@ -8,6 +8,8 @@ import { useCart } from "@/components/cart-provider";
 import {
   openWhatsAppOrder,
   getDeliveryZone,
+  getCartWeightGrams,
+  getDeliveryCharge,
   type CustomerDetails,
 } from "@/lib/whatsapp";
 import { formatINR } from "@/lib/utils";
@@ -41,6 +43,12 @@ export function CartClient() {
   const [placed, setPlaced] = useState(false);
 
   const hasItems = lines.length > 0;
+
+  const weightGrams = useMemo(() => getCartWeightGrams(rawLines), [rawLines]);
+  const deliveryCharge = useMemo(
+    () => getDeliveryCharge(customer.city, total, weightGrams),
+    [customer.city, total, weightGrams]
+  );
 
   const deliveryNote = useMemo(
     () =>
@@ -216,11 +224,32 @@ export function CartClient() {
                 <dt className="text-charcoal/60">Total items</dt>
                 <dd className="font-semibold">{itemCount}</dd>
               </div>
+              <div className="flex justify-between">
+                <dt className="text-charcoal/60">Total weight</dt>
+                <dd className="font-semibold">{(weightGrams / 1000).toFixed(2)} kg</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-charcoal/60">Delivery charges</dt>
+                <dd className={`font-semibold ${deliveryCharge === 0 ? "text-brand" : "text-charcoal"}`}>
+                  {deliveryCharge === 0 ? "FREE" : formatINR(deliveryCharge)}
+                </dd>
+              </div>
               <div className="flex justify-between border-t border-cream-dark pt-3 text-base">
-                <dt className="font-bold">Estimated Total</dt>
-                <dd className="font-extrabold text-brand">{formatINR(total)}</dd>
+                <dt className="font-bold">Payable Total</dt>
+                <dd className="font-extrabold text-brand">{formatINR(total + deliveryCharge)}</dd>
               </div>
             </dl>
+
+            <div className="mt-4 rounded-2xl bg-gold/20 p-4 ring-1 ring-gold/60">
+              <p className="text-xs font-bold uppercase tracking-wide text-charcoal/60">
+                Delivery promise
+              </p>
+              <p className="mt-1 text-sm font-semibold text-charcoal">
+                {deliveryCharge === 0
+                  ? "You've unlocked FREE delivery on this order!"
+                  : `Delivery is ₹30 per kg of total order weight. Free all over India above ₹2,000 and in Rajkot & Bhuj above ₹500.`}
+              </p>
+            </div>
 
             {/* Customer details */}
             <h2 className="mt-6 font-bold text-charcoal">Delivery Details</h2>
@@ -365,7 +394,8 @@ function CitySelect({
         ))}
       </select>
       <p className="mt-1 text-xs text-charcoal/50">
-        Orders from Rajkot go to our city team; all other locations to our dispatch team.
+        Rajkot &amp; Bhuj: free above ₹500. All other locations: free above ₹2,000, otherwise
+        ₹30 per kg of total order weight.
       </p>
       {value && !error && (
         <div className="mt-2 rounded-xl bg-white px-3.5 py-2.5 text-sm text-charcoal ring-1 ring-gold/60">

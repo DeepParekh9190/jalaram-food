@@ -40,7 +40,7 @@ src/
   components/          ← header, footer, product card, cart, forms
   app/                 ← pages: home, /products, /products/[slug], /cart,
                           /wholesale, /about, /contact
-public/images/          ← placeholder SVGs (replace with real photos, same filenames)
+public/images/          ← product and category photos
 ```
 
 ---
@@ -66,11 +66,11 @@ Open `src/data/products.ts`, copy any existing product block, and edit:
 ```ts
 {
   id: "sev-004",                    // any unique id
-  slug: "farsi-fafda",              // the URL: /products/farsi-fafda (unique, lowercase)
-  name: "Farsi Fafda",
+  slug: "new-sev",                  // the URL: /products/new-sev (unique, lowercase)
+  name: "New Sev",
   description: "Your description here.",
-  category: "Farsan",               // one of the categories listed above the array
-  image: "/images/products/farsi-fafda.svg",  // put the photo in public/images/products/
+  category: "Saurashtra Special",   // one of the categories listed above the array
+  image: "/images/products/new-sev.png",      // put the photo in public/images/products/
   packSizes: [
     { size: "250g", price: 65, wholesalePrice: 55 },
     { size: "500g", price: 125 },
@@ -101,22 +101,23 @@ The new price appears **everywhere automatically**, product cards, the product
 page, the cart and the WhatsApp order message. Nothing else to change.
 
 To update a photo: replace the file in `public/images/products/` keeping the same
-filename (e.g. `nylon-sev.svg` → put a real photo named `nylon-sev.jpg` and update
+filename (e.g. `nylon-sev.png` → put a real photo with the same name and update
 the `image:` path in `products.ts`).
 
-### 8. Change the WhatsApp numbers
+### 8. Change the WhatsApp number
 Open `src/data/site-config.ts`:
 
 ```ts
 export const whatsappConfig = {
-  rajkotNumber: "917028464273",       // Number A, Rajkot city orders
-  otherCitiesNumber: "919727019097",  // Number B, every other city
-  wholesaleNumber: "917028464273",    // wholesale enquiries
+  whatsappNumber: "919327012723",  // official number, used across the site
+  rajkotNumber: "919327012723",    // city route
+  otherCitiesNumber: "919327012723", // courier route
+  wholesaleNumber: "919327012723",  // wholesale enquiries
 };
 ```
 
-Use digits only with country code (e.g. `91` + 10-digit number). Orders with city
-"Rajkot" (any capitalisation/spacing) go to Number A; all others to Number B.
+Use digits only with country code (e.g. `91` + 10-digit number). All routes and
+buttons currently point at the single official number; change them together.
 
 ### 9. Update business contact details
 Same file: `phone`, `email`, `address`, `instagram`, `deliveryInfo`, `hours`.
@@ -128,11 +129,11 @@ Same file: `phone`, `email`, `address`, `instagram`, `deliveryInfo`, `hours`.
 3. After deploying, update the domain in `src/app/sitemap.ts`, `src/app/robots.ts`
    and `metadataBase` in `src/app/layout.tsx`.
 
-### 11. City delivery zones
-The checkout city dropdown (`deliveryCities`) and the delivery note shown after
-a city is picked and added to the WhatsApp order message (`deliveryZones`) are
-both in `src/data/site-config.ts`. Rajkot gets the same-day zone, every other
-city the courier zone; edit the text or add cities there.
+### 11. Delivery charges & zones
+`deliveryPolicy` in `src/data/site-config.ts` holds the rules: free all over India
+above ₹2,000, free in Rajkot & Bhuj above ₹500, otherwise ₹30 per kg of total
+order weight (rounded up to the next kg). The checkout dropdown and the WhatsApp
+message both use these rules. Edit the text in `deliveryZones` there as needed.
 
 ### 12. Enable Google Analytics (optional)
 Analytics is wired up but off by default. Paste your GA4 measurement ID
@@ -150,14 +151,13 @@ database, editing the data file is the safe, honest way to keep the site accurat
 1. Customer adds snacks to the cart (pack size selectable per product, price
    updates with the pack).
 2. On the cart page they enter name, mobile, city, address.
-3. "Place Order on WhatsApp" opens WhatsApp with a formatted order message, 
-   routed to Number A for Rajkot, Number B for everyone else.
+3. "Place Order on WhatsApp" opens WhatsApp with a formatted order message,
+   including the order weight, delivery charges and payable total.
 4. The customer presses **Send** in WhatsApp; the team confirms delivery and
    payment manually. Nothing is auto-submitted or paid online.
 
 ## Notes
 
-- Sample images in `public/images/` are generated placeholders
-  (`node scripts/generate-images.mjs` regenerates them).
-- `npm run verify` re-checks price integrity, city routing and message formatting
+- Images in `public/images/` are sample photos; replace them with real ones.
+- `npm run verify` re-checks price integrity, delivery rules and message formatting
   after any data edits.

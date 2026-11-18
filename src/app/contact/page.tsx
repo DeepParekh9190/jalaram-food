@@ -21,7 +21,7 @@ export default function ContactPage() {
       <div className="mt-10 grid gap-5 md:grid-cols-2">
         <div className="space-y-4">
           <a
-            href={`https://wa.me/${whatsappConfig.rajkotNumber}?text=${encodeURIComponent(
+            href={`https://wa.me/${whatsappConfig.whatsappNumber}?text=${encodeURIComponent(
               "Hello, I have a question about your snacks."
             )}`}
             target="_blank"
@@ -34,6 +34,7 @@ export default function ContactPage() {
             <div>
               <p className="font-bold text-charcoal">WhatsApp (fastest)</p>
               <p className="text-sm text-charcoal/60">Message us your order or query directly.</p>
+              <p className="mt-1 text-sm font-semibold text-brand">{siteConfig.phone}</p>
             </div>
           </a>
 

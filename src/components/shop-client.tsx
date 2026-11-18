@@ -68,7 +68,7 @@ export function ShopClient() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search sev, gathiya, combos…"
+            placeholder="Search sev, gathiya, namkeen…"
             className="w-full rounded-full border border-cream-dark bg-white py-3 pl-11 pr-4 text-sm text-charcoal placeholder:text-charcoal/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </label>

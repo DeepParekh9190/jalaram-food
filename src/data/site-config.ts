@@ -22,19 +22,19 @@ export const siteConfig = {
     "Traditional Gujarati and Kutchi snacks like sev, gathiya, fafda and more, made fresh in small batches with quality ingredients.",
 
   /** Contact details */
-  phone: "+91 70284 64273",
+  phone: "+91 93270 12723",
   email: "orders@jalaramfood.example",
   address: "Shop 12, Danapith Market, Rajkot, Gujarat 360001",
 
   /** Social links (placeholder) */
   instagram: "https://instagram.com/",
-  whatsappCatalog: "https://wa.me/919876543210",
+  whatsappCatalog: "https://wa.me/919327012723",
 
-  /** Delivery information shown on cart / contact pages */
+  /** Delivery information shown on cart / contact / product pages */
   deliveryInfo: [
-    "Free delivery within Rajkot city on orders above ₹500.",
-    "Courier delivery across Gujarat in 2–4 days.",
-    "Pan-India shipping available on bulk orders.",
+    "Free delivery all over India on orders above ₹2,000.",
+    "Free delivery in Rajkot & Bhuj on orders above ₹500.",
+    "For all other orders, delivery is ₹30 per kg, calculated on the total order weight.",
   ],
 
   /** Open hours */
@@ -48,12 +48,12 @@ export const siteConfig = {
  * Format: country code + number, digits only.
  */
 export const whatsappConfig = {
-  /** Number A: orders from RAJKOT customers */
-  rajkotNumber: "917028464273",
-  /** Number B: orders from every other city */
-  otherCitiesNumber: "919727019097",
-  /** Wholesale / bulk enquiries (Phase 11) */
-  wholesaleNumber: "917028464273",
+  /** Official contact / WhatsApp number, used everywhere on the site */
+  whatsappNumber: "919327012723",
+  /** Kept for city-aware routing; both routes reach the official number */
+  rajkotNumber: "919327012723",
+  otherCitiesNumber: "919327012723",
+  wholesaleNumber: "919327012723",
 } as const;
 
 /** Cities that route to the Rajkot number (compare lowercase after trim) */
@@ -84,6 +84,13 @@ export const deliveryCities = [
   "Other",
 ] as const;
 
+/** Delivery charge rules, shared by the UI and the WhatsApp order message */
+export const deliveryPolicy = {
+  indiaFreeAbove: 2000,
+  localFreeAbove: 500,
+  perKg: 30,
+} as const;
+
 /**
  * City-aware delivery info, shown in the checkout once a city is
  * selected and added to the WhatsApp order message.
@@ -91,13 +98,18 @@ export const deliveryCities = [
 export const deliveryZones = {
   rajkot: {
     label: "Same-day delivery in Rajkot",
-    detail: "Free delivery in Rajkot on orders above ₹500.",
-    message: "Delivery: Same day (Rajkot city team). Free above ₹500.",
+    detail: `Free delivery in Rajkot on orders above ₹${deliveryPolicy.localFreeAbove}.`,
+    message: `Delivery: Same day in Rajkot. Free above ₹${deliveryPolicy.localFreeAbove}, else ₹${deliveryPolicy.perKg}/kg by total weight.`,
+  },
+  bhuj: {
+    label: "Courier delivery to Bhuj, 2 to 4 days",
+    detail: `Free delivery in Bhuj on orders above ₹${deliveryPolicy.localFreeAbove}.`,
+    message: `Delivery: Courier to Bhuj. Free above ₹${deliveryPolicy.localFreeAbove}, else ₹${deliveryPolicy.perKg}/kg by total weight.`,
   },
   other: {
     label: "Courier delivery, 2 to 4 days",
-    detail: "Delivered by courier anywhere in Gujarat and across India.",
-    message: "Delivery: Courier, 2 to 4 days (dispatch team).",
+    detail: `Free delivery all over India above ₹${deliveryPolicy.indiaFreeAbove}. Otherwise ₹${deliveryPolicy.perKg} per kg of total order weight.`,
+    message: `Delivery: Courier, 2 to 4 days. Free India above ₹${deliveryPolicy.indiaFreeAbove} (Bhuj above ₹${deliveryPolicy.localFreeAbove}), else ₹${deliveryPolicy.perKg}/kg by total weight.`,
   },
 } as const;
 

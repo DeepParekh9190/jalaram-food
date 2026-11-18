@@ -23,7 +23,7 @@ export type Product = {
   name: string;
   description: string;
   category: Category;
-  /** Path under /public, replace the placeholder SVG with a real photo, keep the same filename */
+  /** Path under /public */
   image: string;
   /** First entry is the default/base pack */
   packSizes: PackSize[];
@@ -36,12 +36,12 @@ export type Product = {
 };
 
 export const categories = [
-  "Sev",
-  "Gathiya",
-  "Farsan",
-  "Spicy Snacks",
-  "Traditional Snacks",
-  "Special Combos",
+  "Roasted Items",
+  "Maharashtra Special",
+  "Saurashtra Special",
+  "Kutch Special",
+  "Sweet",
+  "Bakery",
 ] as const;
 
 export type Category = (typeof categories)[number];
@@ -53,7 +53,7 @@ export const products: Product[] = [
     name: "Nylon Sev",
     description:
       "Feather-light, thin and crispy nylon sev fried in small batches. The classic tea-time companion and a favourite topping for poha and chaat.",
-    category: "Sev",
+    category: "Saurashtra Special",
     image: "/images/products/nylon-sev.png",
     packSizes: [
       { size: "250g", price: 60, wholesalePrice: 52 },
@@ -72,7 +72,7 @@ export const products: Product[] = [
     name: "Ratlami Sev",
     description:
       "Bold, spicy Ratlami sev made with fresh garlic and hand-pounded spices. A fiery Malwa-style classic for those who love heat.",
-    category: "Spicy Snacks",
+    category: "Maharashtra Special",
     image: "/images/products/ratlami-sev.png",
     packSizes: [
       { size: "250g", price: 70, wholesalePrice: 60 },
@@ -91,7 +91,7 @@ export const products: Product[] = [
     name: "Papdi Sev Mixture",
     description:
       "A crunchy mixture of papdi, sev, peanuts and fried lentils tossed in our house spice blend. The party bowl that never empties.",
-    category: "Sev",
+    category: "Saurashtra Special",
     image: "/images/products/papdi-sev.png",
     packSizes: [
       { size: "250g", price: 80, wholesalePrice: 70 },
@@ -109,7 +109,7 @@ export const products: Product[] = [
     name: "Bhavnagari Gathiya",
     description:
       "Soft, thick and pepper-kissed gathiya from Bhavnagar's traditional recipe. Best enjoyed hot with green chilli and fried papdi.",
-    category: "Gathiya",
+    category: "Saurashtra Special",
     image: "/images/products/bhavnagari-gathiya.png",
     packSizes: [
       { size: "250g", price: 65, wholesalePrice: 55 },
@@ -128,7 +128,7 @@ export const products: Product[] = [
     name: "Tikha Gathiya",
     description:
       "Spicy gathiya dusted with red chilli and ajwain. Crisp strands with a slow Gujarati-style heat that keeps you reaching for more.",
-    category: "Spicy Snacks",
+    category: "Saurashtra Special",
     image: "/images/products/tikha-gathiya.png",
     packSizes: [
       { size: "250g", price: 68, wholesalePrice: 58 },
@@ -147,7 +147,7 @@ export const products: Product[] = [
     name: "Methi Gathiya",
     description:
       "Gathiya laced with kasuri methi and a gentle masala. Earthy, fragrant and perfect with an evening cup of chai.",
-    category: "Gathiya",
+    category: "Saurashtra Special",
     image: "/images/products/methi-gathiya.png",
     packSizes: [
       { size: "250g", price: 72, wholesalePrice: 62 },
@@ -160,30 +160,12 @@ export const products: Product[] = [
     tags: ["Methi", "Family Pack"],
   },
   {
-    id: "far-001",
-    slug: "fafda-jalebi",
-    name: "Fafda Gathiya Combo",
-    description:
-      "Crisp besan fafda with green chilli chutney mix, the famous Jahnvi-favoured morning snack of Surat, packed to stay crunchy.",
-    category: "Farsan",
-    image: "/images/products/fafda.svg",
-    packSizes: [
-      { size: "400g", price: 95, wholesalePrice: 82 },
-      { size: "800g", price: 180, wholesalePrice: 158 },
-    ],
-    minimumWholesaleQuantity: 8,
-    isAvailable: true,
-    isFeatured: true,
-    isBestseller: true,
-    tags: ["Breakfast", "Popular"],
-  },
-  {
     id: "far-002",
     slug: "chana-dal-namkeen",
     name: "Chana Dal Namkeen",
     description:
       "Crunchy fried chana dal seasoned with black salt and amchur. Protein-rich, guilt-free munching for anytime of the day.",
-    category: "Traditional Snacks",
+    category: "Roasted Items",
     image: "/images/products/chana-dal.png",
     packSizes: [
       { size: "250g", price: 55, wholesalePrice: 48 },
@@ -202,7 +184,7 @@ export const products: Product[] = [
     name: "Masala Peanuts",
     description:
       "Roasted peanuts coated in a spicy besan shell. The enduring favourite of every Gujarati railway journey and cricket match.",
-    category: "Traditional Snacks",
+    category: "Roasted Items",
     image: "/images/products/masala-peanuts.png",
     packSizes: [
       { size: "250g", price: 60, wholesalePrice: 52 },
@@ -220,7 +202,7 @@ export const products: Product[] = [
     name: "Classic Wheat Khakhra",
     description:
       "Paper-thin, slow-roasted whole-wheat khakhra. Crackling crisp with ghee-roasted flavour, a wholesome travel snack.",
-    category: "Traditional Snacks",
+    category: "Roasted Items",
     image: "/images/products/khakhra-classic.png",
     packSizes: [
       { size: "200g", price: 75, wholesalePrice: 65 },
@@ -238,7 +220,7 @@ export const products: Product[] = [
     name: "Kutchi Dabeli Masala Papdi",
     description:
       "Kutch's dabeli spices layered over crisp papdi with peanuts and pomegranate-style sweetness. Street flavours in a ready-to-eat pack.",
-    category: "Farsan",
+    category: "Kutch Special",
     image: "/images/products/kutchi-dabeli-masala-papdi.png",
     packSizes: [
       { size: "300g", price: 90, wholesalePrice: 78 },
@@ -256,7 +238,7 @@ export const products: Product[] = [
     name: "Chevdo Namkeen",
     description:
       "Classic Gujarati chevdo with potato threads, sev, cashews and raisins. Light, sweet-salty and endlessly snackable.",
-    category: "Farsan",
+    category: "Saurashtra Special",
     image: "/images/products/chevdo-namkeen.png",
     packSizes: [
       { size: "250g", price: 85, wholesalePrice: 74 },
@@ -274,7 +256,7 @@ export const products: Product[] = [
     name: "Vanela Gathiya",
     description:
       "Rolled, soft vanela gathiya, the Jamnagar style that stays fresh for hours. Comes with fried chillies and papdi on the side.",
-    category: "Gathiya",
+    category: "Saurashtra Special",
     image: "/images/products/vanela-gathiya.png",
     packSizes: [
       { size: "400g", price: 98, wholesalePrice: 85 },
@@ -285,58 +267,6 @@ export const products: Product[] = [
     isFeatured: false,
     isBestseller: false,
     tags: ["Soft", "Jamnagar Style"],
-  },
-  {
-    id: "combo-001",
-    slug: "festival-hamper",
-    name: "Festival Namkeen Hamper",
-    description:
-      "A curated festive box of six bestsellers, nylon sev, ratlami, gathiya, fafda, khakhra and chevdo. Our most gifted combo.",
-    category: "Special Combos",
-    image: "/images/products/festival-hamper.svg",
-    packSizes: [
-      { size: "1.2kg Box", price: 550, wholesalePrice: 480 },
-      { size: "2kg Box", price: 1050, wholesalePrice: 920 },
-    ],
-    minimumWholesaleQuantity: 5,
-    isAvailable: true,
-    isFeatured: true,
-    isBestseller: true,
-    tags: ["Gift", "Festival"],
-  },
-  {
-    id: "combo-002",
-    slug: "chai-time-combo",
-    name: "Chai Time Combo",
-    description:
-      "Three tea-time classics in one pack: nylon sev, masala peanuts and tikha gathiya. Sized for the whole family's evening chai.",
-    category: "Special Combos",
-    image: "/images/products/chai-time-combo.png",
-    packSizes: [
-      { size: "750g", price: 320, wholesalePrice: 280 },
-    ],
-    minimumWholesaleQuantity: 6,
-    isAvailable: true,
-    isFeatured: false,
-    isBestseller: true,
-    tags: ["Combo", "Value"],
-  },
-  {
-    id: "combo-003",
-    slug: "spicy-lovers-box",
-    name: "Spicy Lovers Box",
-    description:
-      "Ratlami sev, tikha gathiya and masala peanuts packed together for serious chilli fans. Handle with a glass of chaas nearby.",
-    category: "Special Combos",
-    image: "/images/products/spicy-lovers-box.png",
-    packSizes: [
-      { size: "900g", price: 380, wholesalePrice: 335 },
-    ],
-    minimumWholesaleQuantity: 6,
-    isAvailable: true,
-    isFeatured: false,
-    isBestseller: false,
-    tags: ["Spicy", "Combo"],
   },
 ];
 

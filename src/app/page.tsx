@@ -5,6 +5,7 @@ import {
   Award,
   Flame,
   Leaf,
+  MapPin,
   MessageCircle,
   PackageCheck,
   ShieldCheck,
@@ -20,12 +21,12 @@ import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 
 const categoryImages: Record<string, string> = {
-  Sev: "/images/categories/sev.jpg",
-  Gathiya: "/images/categories/gathiya.jpg",
-  Farsan: "/images/categories/farsan.jpg",
-  "Spicy Snacks": "/images/categories/spicy.jpg",
-  "Traditional Snacks": "/images/categories/traditional.jpg",
-  "Special Combos": "/images/categories/combos.png",
+  "Roasted Items": "/images/categories/traditional.jpg",
+  "Maharashtra Special": "/images/categories/spicy.jpg",
+  "Saurashtra Special": "/images/categories/gathiya.jpg",
+  "Kutch Special": "/images/categories/farsan.jpg",
+  Sweet: "/images/categories/traditional.jpg",
+  Bakery: "/images/categories/sev.jpg",
 };
 
 const benefits = [
@@ -58,10 +59,11 @@ const heroHighlights = [
 ];
 
 const trustBadges = [
-  { icon: Truck, label: "Free delivery in Rajkot above ₹500" },
+  { icon: Truck, label: "Free delivery India above ₹2,000" },
+  { icon: MapPin, label: "Rajkot & Bhuj free above ₹500" },
   { icon: Flame, label: "Fresh small batches daily" },
   { icon: Store, label: "Retail & wholesale orders" },
-  { icon: ShieldCheck, label: "Trusted local quality" },
+  { icon: ShieldCheck, label: "₹30/kg delivery by weight" },
 ];
 
 const testimonials = [
@@ -73,7 +75,7 @@ const testimonials = [
   {
     name: "Kiran S.",
     city: "Ahmedabad",
-    text: "Ordered the festival hamper for Diwali gifting. Beautifully packed and everyone loved the ratlami sev.",
+    text: "Ordered the ratlami sev and khakhra for Diwali gifting. Beautifully packed and everyone loved the fresh, crisp taste.",
   },
   {
     name: "Jignesh P.",
@@ -234,13 +236,51 @@ export default function HomePage() {
         </ul>
       </section>
 
+      {/* 1c. DELIVERY PROMOTION */}
+      <section aria-labelledby="delivery-heading" className="bg-brand/5 py-12">
+        <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-charcoal text-cream shadow-xl">
+          <div className="grid md:grid-cols-2">
+            <div className="relative overflow-hidden p-8 sm:p-10">
+              <div
+                aria-hidden
+                className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold/20 blur-2xl"
+              />
+              <span className="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-charcoal">
+                <Truck className="h-4 w-4" aria-hidden /> Delivery offers
+              </span>
+              <h2 id="delivery-heading" className="mt-5 text-3xl font-extrabold sm:text-4xl">
+                Fresh snacks, delivered on us
+              </h2>
+              <p className="mt-3 max-w-lg text-cream/70">
+                Delivery is ₹30 per kg based on your total order weight. Cross a threshold
+                below and shipping is on us.
+              </p>
+            </div>
+            <div className="grid gap-3 bg-white/5 p-8 sm:p-10">
+              <div className="rounded-2xl bg-white p-5 text-charcoal shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-widest text-brand">
+                  All over India
+                </p>
+                <p className="mt-1 text-xl font-extrabold">FREE delivery above ₹2,000</p>
+                <p className="mt-1 text-sm text-charcoal/60">Anywhere in India, no weight charges.</p>
+              </div>
+              <div className="rounded-2xl bg-gold p-5 text-charcoal shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-widest">Rajkot &amp; Bhuj</p>
+                <p className="mt-1 text-xl font-extrabold">FREE delivery above ₹500</p>
+                <p className="mt-1 text-sm text-charcoal/70">Our local customers save more.</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* 2. CATEGORY SECTION */}
       <section aria-labelledby="categories-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 id="categories-heading" className="text-center text-3xl font-bold text-charcoal">
           Shop by Category
         </h2>
         <p className="mt-2 text-center text-charcoal/60">
-          From everyday chai-time munching to festive hampers.
+          Browse our snack collections, organised by taste and region.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {categories.map((category, i) => (
@@ -259,6 +299,69 @@ export default function HomePage() {
                 <p className="p-3 text-center text-[15px] font-semibold text-charcoal transition-colors group-hover:text-brand">
                   {category}
                 </p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 2b. REGIONAL SPECIALS */}
+      <section aria-labelledby="regional-heading" className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gold/40 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-charcoal">
+            <Sparkles className="h-4 w-4 text-brand" aria-hidden /> Regional favourites
+          </span>
+          <h2 id="regional-heading" className="mt-4 text-3xl font-bold text-charcoal">
+            Flavours of the Regions
+          </h2>
+          <p className="mt-2 text-charcoal/60">
+            Three iconic snack traditions, handpicked and packed fresh.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {[
+            {
+              category: "Maharashtra Special",
+              title: "MAHARASHTRA'S SPECIAL",
+              blurb: "Bold, fiery sev and spice-forward crunch.",
+              image: "/images/categories/spicy.jpg",
+            },
+            {
+              category: "Saurashtra Special",
+              title: "SAURASHTRA SPECIAL",
+              blurb: "The gathiya and sev tradition of home.",
+              image: "/images/categories/gathiya.jpg",
+            },
+            {
+              category: "Kutch Special",
+              title: "KUTCH SPECIAL",
+              blurb: "Dabeli-spiced papdi and desert-style snacks.",
+              image: "/images/categories/farsan.jpg",
+            },
+          ].map((region, i) => (
+            <Reveal key={region.category} delay={i * 80}>
+              <Link
+                href={`/products?category=${encodeURIComponent(region.category)}`}
+                className="group relative block h-72 overflow-hidden rounded-[2rem] shadow-md ring-1 ring-cream-dark"
+              >
+                <Image
+                  src={region.image}
+                  alt={`${region.title} snacks`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-cream">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-charcoal">
+                    <Award className="h-3.5 w-3.5" aria-hidden /> Regional special
+                  </span>
+                  <h3 className="mt-3 text-2xl font-extrabold">{region.title}</h3>
+                  <p className="mt-1 text-sm text-cream/80">{region.blurb}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-gold group-hover:gap-2">
+                    Explore <ArrowRight className="h-4 w-4 transition-all" aria-hidden />
+                  </span>
+                </div>
               </Link>
             </Reveal>
           ))}
@@ -325,7 +428,7 @@ export default function HomePage() {
             Perfect for shops, events, weddings and corporate gifting.
           </p>
           <a
-            href={`https://wa.me/${whatsappConfig.rajkotNumber}?text=${encodeURIComponent(
+            href={`https://wa.me/${whatsappConfig.whatsappNumber}?text=${encodeURIComponent(
               "Hello, I would like to enquire about wholesale snack prices."
             )}`}
             target="_blank"
