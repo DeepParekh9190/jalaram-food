@@ -240,16 +240,11 @@ export function CartClient() {
               </div>
             </dl>
 
-            <div className="mt-4 rounded-2xl bg-gold/20 p-4 ring-1 ring-gold/60">
-              <p className="text-xs font-bold uppercase tracking-wide text-charcoal/60">
-                Delivery promise
+            {deliveryCharge === 0 && (
+              <p className="mt-4 rounded-2xl bg-gold/20 px-4 py-3 text-sm font-semibold text-charcoal ring-1 ring-gold/60">
+                You&apos;ve unlocked FREE delivery on this order!
               </p>
-              <p className="mt-1 text-sm font-semibold text-charcoal">
-                {deliveryCharge === 0
-                  ? "You've unlocked FREE delivery on this order!"
-                  : `Delivery is ₹30 per kg of total order weight. Free all over India above ₹2,000 and in Rajkot & Bhuj above ₹500.`}
-              </p>
-            </div>
+            )}
 
             {/* Customer details */}
             <h2 className="mt-6 font-bold text-charcoal">Delivery Details</h2>
@@ -394,8 +389,7 @@ function CitySelect({
         ))}
       </select>
       <p className="mt-1 text-xs text-charcoal/50">
-        Rajkot &amp; Bhuj: free above ₹500. All other locations: free above ₹2,000, otherwise
-        ₹30 per kg of total order weight.
+        Delivery charges depend on your city and the total order weight.
       </p>
       {value && !error && (
         <div className="mt-2 rounded-xl bg-white px-3.5 py-2.5 text-sm text-charcoal ring-1 ring-gold/60">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
-import { siteConfig } from "@/data/site-config";
+import { deliveryOffers, siteConfig } from "@/data/site-config";
 import { useCart } from "@/components/cart-provider";
 import { cn } from "@/lib/utils";
 
@@ -33,9 +33,9 @@ export function Header() {
                 copy === 1 && "motion-reduce:hidden"
               )}
             >
-              Free delivery all over India on orders above ₹2,000
+              {deliveryOffers.india}
               <span className="mx-3 text-gold" aria-hidden>★</span>
-              Rajkot &amp; Bhuj — free delivery on orders above ₹500
+              {deliveryOffers.local}
               <span className="mx-3 text-gold" aria-hidden>★</span>
             </span>
           ))}

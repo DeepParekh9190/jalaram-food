@@ -5,7 +5,6 @@ import {
   Award,
   Flame,
   Leaf,
-  MapPin,
   MessageCircle,
   PackageCheck,
   ShieldCheck,
@@ -16,7 +15,7 @@ import {
   Quote,
 } from "lucide-react";
 import { categories, getBestsellers } from "@/data/products";
-import { siteConfig, whatsappConfig } from "@/data/site-config";
+import { deliveryOffers, siteConfig, whatsappConfig } from "@/data/site-config";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 
@@ -59,11 +58,10 @@ const heroHighlights = [
 ];
 
 const trustBadges = [
-  { icon: Truck, label: "Free delivery India above ₹2,000" },
-  { icon: MapPin, label: "Rajkot & Bhuj free above ₹500" },
   { icon: Flame, label: "Fresh small batches daily" },
   { icon: Store, label: "Retail & wholesale orders" },
-  { icon: ShieldCheck, label: "₹30/kg delivery by weight" },
+  { icon: PackageCheck, label: "Easy WhatsApp ordering" },
+  { icon: ShieldCheck, label: "Trusted local quality" },
 ];
 
 const testimonials = [
@@ -252,22 +250,16 @@ export default function HomePage() {
                 Fresh snacks, delivered on us
               </h2>
               <p className="mt-3 max-w-lg text-cream/70">
-                Delivery is ₹30 per kg based on your total order weight. Cross a threshold
-                below and shipping is on us.
+                Delivery is {deliveryOffers.perKg}. Cross a threshold below and shipping is
+                on us.
               </p>
             </div>
             <div className="grid gap-3 bg-white/5 p-8 sm:p-10">
               <div className="rounded-2xl bg-white p-5 text-charcoal shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-widest text-brand">
-                  All over India
-                </p>
-                <p className="mt-1 text-xl font-extrabold">FREE delivery above ₹2,000</p>
-                <p className="mt-1 text-sm text-charcoal/60">Anywhere in India, no weight charges.</p>
+                <p className="text-lg font-extrabold sm:text-xl">{deliveryOffers.india}</p>
               </div>
               <div className="rounded-2xl bg-gold p-5 text-charcoal shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-widest">Rajkot &amp; Bhuj</p>
-                <p className="mt-1 text-xl font-extrabold">FREE delivery above ₹500</p>
-                <p className="mt-1 text-sm text-charcoal/70">Our local customers save more.</p>
+                <p className="text-lg font-extrabold sm:text-xl">{deliveryOffers.local}</p>
               </div>
             </div>
           </div>

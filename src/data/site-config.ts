@@ -12,6 +12,21 @@
  * add a `logo` path back here.
  */
 
+/** Single source of truth for the delivery offer numbers and wording */
+const deliveryThresholds = {
+  india: 2000,
+  local: 500,
+  perKg: 30,
+} as const;
+
+export const deliveryOffers = {
+  india: `Free delivery all over India on orders above ₹${deliveryThresholds.india.toLocaleString(
+    "en-IN"
+  )}`,
+  local: `Rajkot & Bhuj — free delivery on orders above ₹${deliveryThresholds.local}`,
+  perKg: `₹${deliveryThresholds.perKg} per kg, calculated on the total order weight`,
+} as const;
+
 export const siteConfig = {
   /** Brand name shown in header, footer, metadata */
   brandName: "Jalaram Food",
@@ -32,9 +47,9 @@ export const siteConfig = {
 
   /** Delivery information shown on cart / contact / product pages */
   deliveryInfo: [
-    "Free delivery all over India on orders above ₹2,000.",
-    "Free delivery in Rajkot & Bhuj on orders above ₹500.",
-    "For all other orders, delivery is ₹30 per kg, calculated on the total order weight.",
+    `${deliveryOffers.india}.`,
+    `${deliveryOffers.local}.`,
+    `For all other orders, delivery is ${deliveryOffers.perKg}.`,
   ],
 
   /** Open hours */
@@ -86,9 +101,9 @@ export const deliveryCities = [
 
 /** Delivery charge rules, shared by the UI and the WhatsApp order message */
 export const deliveryPolicy = {
-  indiaFreeAbove: 2000,
-  localFreeAbove: 500,
-  perKg: 30,
+  indiaFreeAbove: deliveryThresholds.india,
+  localFreeAbove: deliveryThresholds.local,
+  perKg: deliveryThresholds.perKg,
 } as const;
 
 /**
@@ -108,7 +123,7 @@ export const deliveryZones = {
   },
   other: {
     label: "Courier delivery, 2 to 4 days",
-    detail: `Free delivery all over India above ₹${deliveryPolicy.indiaFreeAbove}. Otherwise ₹${deliveryPolicy.perKg} per kg of total order weight.`,
+    detail: `${deliveryOffers.india}. Otherwise ${deliveryOffers.perKg}.`,
     message: `Delivery: Courier, 2 to 4 days. Free India above ₹${deliveryPolicy.indiaFreeAbove} (Bhuj above ₹${deliveryPolicy.localFreeAbove}), else ₹${deliveryPolicy.perKg}/kg by total weight.`,
   },
 } as const;
