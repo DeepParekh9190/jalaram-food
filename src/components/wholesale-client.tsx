@@ -138,7 +138,7 @@ export function WholesaleClient() {
 
       <fieldset className="mt-5">
         <legend className="text-sm font-semibold text-charcoal">Products You Need</legend>
-        <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <div className="mt-2 grid grid-cols-1 gap-2 min-[420px]:grid-cols-2 sm:grid-cols-3">
           {products
             .filter((p) => p.isAvailable)
             .map((p) => (

@@ -8,6 +8,9 @@ import { siteConfig } from "@/data/site-config";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ProductCard } from "@/components/product-card";
 
+// Static local catalogue: opt out of instant-navigation URL-data validation
+export const instant = false;
+
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
@@ -127,7 +130,7 @@ export default async function ProductPage(props: Props) {
         <h2 id="related-heading" className="text-2xl font-bold text-charcoal">
           You May Also Like
         </h2>
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
           {related.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

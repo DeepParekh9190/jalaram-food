@@ -109,13 +109,13 @@ export default function HomePage() {
           className="anim-float absolute bottom-[20%] left-[38%] hidden h-12 w-12 rounded-2xl bg-brand/10 lg:block [animation-delay:3.5s]"
         />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 sm:gap-14 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
           <div>
             <p className="anim-fade-up inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-charcoal ring-1 ring-cream-dark">
               <Sparkles className="h-4 w-4 text-brand" aria-hidden />
               Fresh batches, every single morning
             </p>
-            <h1 className="anim-fade-up anim-delay-1 mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="anim-fade-up anim-delay-1 mt-5 text-[2.25rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
               Authentic Taste of{" "}
               <span className="relative inline-block text-brand">
                 Gujarat
@@ -187,7 +187,7 @@ export default function HomePage() {
               />
             </div>
             {/* floating price card */}
-            <div className="anim-float absolute -bottom-6 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl shadow-charcoal/15 ring-1 ring-cream-dark sm:left-8 [animation-delay:1.2s]">
+            <div className="anim-float absolute -bottom-6 left-4 hidden items-center gap-3 rounded-2xl bg-white p-4 shadow-xl shadow-charcoal/15 ring-1 ring-cream-dark sm:flex sm:left-8 [animation-delay:1.2s]">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10">
                 <ShoppingBag className="h-5 w-5 text-brand" aria-hidden />
               </span>
@@ -294,9 +294,9 @@ export default function HomePage() {
                   alt={`${category} snacks`}
                   width={400}
                   height={300}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:aspect-[4/3]"
                 />
-                <p className="p-3 text-center text-[15px] font-semibold text-charcoal transition-colors group-hover:text-brand">
+                <p className="p-2.5 text-center text-[13px] font-semibold leading-tight text-charcoal transition-colors group-hover:text-brand sm:p-3 sm:text-[15px]">
                   {category}
                 </p>
               </Link>
@@ -342,7 +342,7 @@ export default function HomePage() {
             <Reveal key={region.category} delay={i * 80}>
               <Link
                 href={`/products?category=${encodeURIComponent(region.category)}`}
-                className="group relative block h-72 overflow-hidden rounded-[2rem] shadow-md ring-1 ring-cream-dark"
+                className="group relative block h-56 overflow-hidden rounded-[2rem] shadow-md ring-1 ring-cream-dark sm:h-72"
               >
                 <Image
                   src={region.image}
@@ -356,7 +356,7 @@ export default function HomePage() {
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-charcoal">
                     <Award className="h-3.5 w-3.5" aria-hidden /> Regional special
                   </span>
-                  <h3 className="mt-3 text-2xl font-extrabold">{region.title}</h3>
+                  <h3 className="mt-3 text-xl font-extrabold sm:text-2xl">{region.title}</h3>
                   <p className="mt-1 text-sm text-cream/80">{region.blurb}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-gold group-hover:gap-2">
                     Explore <ArrowRight className="h-4 w-4 transition-all" aria-hidden />
@@ -382,9 +382,9 @@ export default function HomePage() {
               View all
             </Link>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
             {bestsellers.map((product, i) => (
-              <Reveal key={product.id} delay={(i % 4) * 60}>
+              <Reveal key={product.id} delay={(i % 4) * 60} className="h-full">
                 <ProductCard product={product} />
               </Reveal>
             ))}

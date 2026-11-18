@@ -10,7 +10,7 @@ export function Footer() {
     .map((p) => ({ name: p.name, href: `/products/${p.slug}` }));
 
   return (
-    <footer className="mt-16 border-t border-cream-dark bg-white">
+    <footer className="mt-16 border-t border-cream-dark bg-white pb-24 md:pb-0">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         {/* Brand */}
         <div>
@@ -40,8 +40,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Quick links */}
-        <nav aria-label="Footer quick links">
+        {/* Quick links — duplicated by the mobile tab bar, so hidden on phones */}
+        <nav aria-label="Footer quick links" className="hidden md:block">
           <p className="text-xs font-semibold uppercase tracking-wider text-charcoal/50">
             Quick Links
           </p>
@@ -56,7 +56,7 @@ export function Footer() {
         </nav>
 
         {/* Categories */}
-        <nav aria-label="Footer product categories">
+        <nav aria-label="Footer product categories" className="hidden md:block">
           <p className="text-xs font-semibold uppercase tracking-wider text-charcoal/50">
             Categories
           </p>

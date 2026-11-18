@@ -133,7 +133,7 @@ export function ShopClient() {
           <p className="mt-6 text-sm text-charcoal/50" aria-live="polite">
             Showing {filtered.length} of {products.length} products
           </p>
-          <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+          <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
             {filtered.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

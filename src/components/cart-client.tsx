@@ -135,7 +135,7 @@ export function CartClient() {
                   alt={line.product.name}
                   width={96}
                   height={96}
-                  className="h-24 w-24 shrink-0 rounded-2xl object-cover"
+                  className="h-20 w-20 shrink-0 rounded-2xl object-cover sm:h-24 sm:w-24"
                 />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <div className="flex items-start justify-between gap-2">
